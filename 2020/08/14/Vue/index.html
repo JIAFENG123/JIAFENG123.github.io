@@ -16,11 +16,18 @@
 
   <!-- 页面元数据 -->
   
-  <title>Vue - XGG</title>
+  <title>Vue组件通信基础 - XGG</title>
   
     <meta name="keywords" content="JS,Vue">
   
 
+  
+    <meta name="description" content="
+
+快速原型开发
+可以快速识别.vue文件的插件
+
+123cnpm install @vue-cli -gcnpm install -g @vue/cli-service-globalvue serve App.vue">
   
 
   <!-- feed -->
@@ -396,7 +403,7 @@
  
 <div id="pjax-data" style="display: none"> 
   <div id="pjax-ispage">true</div> 
-  <div id="pjax-pageTitle">Vue</div> 
+  <div id="pjax-pageTitle">Vue组件通信基础</div> 
   <div id="pjax-enable-cover">true</div> 
   <div id="pjax-comment-path">none</div> 
   <div id="pjax-comment-placeholder">none</div> 
@@ -445,7 +452,7 @@
           
   <h1 class="title">
     <a href="/2020/08/14/Vue/">
-      Vue
+      Vue组件通信基础
     </a>
   </h1>
 
@@ -499,7 +506,34 @@
         <div class="article-entry" itemprop="articleBody">
           
           
-          
+          <img src="data:image/png;base64,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" width=100% />
+
+<h2 id="快速原型开发"><a href="#快速原型开发" class="headerlink" title="快速原型开发"></a>快速原型开发</h2><blockquote>
+<p>可以快速识别.vue文件的插件</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install @vue-cli -g</span><br><span class="line">cnpm install -g @vue/cli-service-<span class="built_in">global</span></span><br><span class="line">vue serve App.vue</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h2 id="1、向上通知-dispatch"><a href="#1、向上通知-dispatch" class="headerlink" title="1、向上通知$dispatch"></a>1、向上通知$dispatch</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$dispatch = <span class="function"><span class="keyword">function</span>(<span class="params">eventName, value</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> parent = <span class="built_in">this</span>.$parent;</span><br><span class="line">    <span class="keyword">while</span>(parent)&#123;</span><br><span class="line">        parent.$emit(eventName,value)</span><br><span class="line">        parent = parent.$parent</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、向下广播-broadcast"><a href="#2、向下广播-broadcast" class="headerlink" title="2、向下广播$broadcast"></a>2、向下广播$broadcast</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$broadcast = <span class="function"><span class="keyword">function</span>(<span class="params">eventName, value</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> broadcast = <span class="function"><span class="params">children</span> =&gt;</span> &#123;</span><br><span class="line">        children.forEach(<span class="function"><span class="params">child</span> =&gt;</span> &#123;</span><br><span class="line">            child.$emit(eventName, value)</span><br><span class="line">            <span class="keyword">if</span>(child.$children)&#123;</span><br><span class="line">                broadcast(child.$children)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    broadcast(<span class="built_in">this</span>.$children)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、-attrs、-listeners"><a href="#3、-attrs、-listeners" class="headerlink" title="3、$attrs、$listeners"></a>3、$attrs、$listeners</h2><blockquote>
+<p>$attrs传递属性，$listeners传递方法</p>
+<p>v-bind=”$attrs”    v-on=”$listeners”</p>
+</blockquote>
+<h2 id="4、provide、inject"><a href="#4、provide、inject" class="headerlink" title="4、provide、inject"></a>4、provide、inject</h2><blockquote>
+<p>父组件provide，子组件inject</p>
+</blockquote>
+<h2 id="5、EventBus"><a href="#5、EventBus" class="headerlink" title="5、EventBus"></a>5、EventBus</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//挂载到全局</span></span><br><span class="line">Vue.prototype.$bus = <span class="keyword">new</span> Vue()</span><br><span class="line"><span class="comment">//在组件中注册</span></span><br><span class="line"><span class="built_in">this</span>.$bus.$on(<span class="string">&#x27;xxx&#x27;</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;全局注册方法&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="built_in">this</span>.$nextTick(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.$bus.$emit(<span class="string">&#x27;xxx&#x27;</span>,<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="6、props"><a href="#6、props" class="headerlink" title="6、props"></a>6、props</h2><h2 id="7、-emit"><a href="#7、-emit" class="headerlink" title="7、$emit"></a>7、$emit</h2><blockquote>
+<p>.sync   v-model</p>
+</blockquote>
+<h2 id="8、-parent、-children"><a href="#8、-parent、-children" class="headerlink" title="8、$parent、$children"></a>8、$parent、$children</h2><h2 id="9、Ref"><a href="#9、Ref" class="headerlink" title="9、Ref"></a>9、Ref</h2><h2 id="10、Vuex"><a href="#10、Vuex" class="headerlink" title="10、Vuex"></a>10、Vuex</h2><h1 id="Vue中使用jsx"><a href="#Vue中使用jsx" class="headerlink" title="Vue中使用jsx"></a>Vue中使用jsx</h1><h2 id="1、函数式组件"><a href="#1、函数式组件" class="headerlink" title="1、函数式组件"></a>1、函数式组件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">   render() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我是函数式组件<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、提出render"><a href="#2、提出render" class="headerlink" title="2、提出render"></a>2、提出render</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    components:&#123;Table&#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        render(h,&#123;row&#125;)&#123;  <span class="comment">//提出render</span></span><br><span class="line">            <span class="keyword">return</span> &lt;div&gt;&#123;row.name&#125;&lt;/div&gt;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            columns: [</span><br><span class="line">                &#123;</span><br><span class="line">                    title: &#x27;Name&#x27;,</span><br><span class="line">                    key: &#x27;name&#x27;,</span><br><span class="line">                    render:<span class="keyword">this</span>.render  <span class="comment">//提出render</span></span><br></pre></td></tr></table></figure>
           
             <div class='article_footer'>
               
@@ -586,10 +620,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-14T00:05:45+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-08-23T18:38:55+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Aug 14, 2020</p>
+    <p>更新于：Aug 23, 2020</p>
   </a>
 </div>
 
@@ -616,7 +650,12 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/14/Vue/&title=Vue - XGG&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2020/08/14/Vue/&title=Vue组件通信基础 - XGG&summary=
+
+快速原型开发
+可以快速识别.vue文件的插件
+
+123cnpm install @vue-cli -gcnpm install -g @vue/cli-service-globalvue serve App.vue"
           
           >
           
@@ -628,7 +667,12 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/14/Vue/&title=Vue - XGG&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://yoursite.com/2020/08/14/Vue/&title=Vue组件通信基础 - XGG&summary=
+
+快速原型开发
+可以快速识别.vue文件的插件
+
+123cnpm install @vue-cli -gcnpm install -g @vue/cli-service-globalvue serve App.vue"
           
           >
           
@@ -640,7 +684,12 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/14/Vue/&title=Vue - XGG&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2020/08/14/Vue/&title=Vue组件通信基础 - XGG&summary=
+
+快速原型开发
+可以快速识别.vue文件的插件
+
+123cnpm install @vue-cli -gcnpm install -g @vue/cli-service-globalvue serve App.vue"
           
           >
           
@@ -724,6 +773,20 @@ hello world       斜体  ...</p>
 
 
 
+  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91"><span class="toc-text">快速原型开发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1"><span class="toc-text">组件通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%90%91%E4%B8%8A%E9%80%9A%E7%9F%A5-dispatch"><span class="toc-text">1、向上通知$dispatch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%90%91%E4%B8%8B%E5%B9%BF%E6%92%AD-broadcast"><span class="toc-text">2、向下广播$broadcast</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81-attrs%E3%80%81-listeners"><span class="toc-text">3、$attrs、$listeners</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81provide%E3%80%81inject"><span class="toc-text">4、provide、inject</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81EventBus"><span class="toc-text">5、EventBus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81props"><span class="toc-text">6、props</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81-emit"><span class="toc-text">7、$emit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81-parent%E3%80%81-children"><span class="toc-text">8、$parent、$children</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81Ref"><span class="toc-text">9、Ref</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81Vuex"><span class="toc-text">10、Vuex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6"><span class="toc-text">1、函数式组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%8F%90%E5%87%BArender"><span class="toc-text">2、提出render</span></a></li></ol>
+    </div>
+  </section>
+
 
   
 
@@ -763,56 +826,8 @@ hello world       斜体  ...</p>
       
     
       
-        <br>
-        <div class="social-wrapper">
-          
-            
-              <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="mailto:me@xxx.com"
-                class="social fas fa-envelope flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://github.com/xaoxuu"
-                class="social fab fa-github flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://music.163.com/#/user/home?id=63035382"
-                class="social fas fa-headphones-alt flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-        </div>
-      
-    
-      
-        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
-</div>
-      
-    
-      
-        Use
-        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
-        
+	 <br>
+	  <p>由<a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>强力驱动</p>
       
     
       

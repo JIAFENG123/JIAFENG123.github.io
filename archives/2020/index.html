@@ -703,7 +703,7 @@
           
   <h2 class="title">
     <a href="/2020/08/14/Vue/">
-      Vue
+      Vue组件通信基础
     </a>
   </h2>
 
@@ -750,7 +750,7 @@
     <a class='notlink'>
       <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
       
-      <span id="/2020/08/14/Vue/" class="leancloud_visitors" data-flag-title="Vue">
+      <span id="/2020/08/14/Vue/" class="leancloud_visitors" data-flag-title="Vue组件通信基础">
       <p>
         <span class="leancloud-visitors-count"></span>
       </p>
@@ -792,10 +792,19 @@
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <img src="data:image/png;base64,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" width=100% />
+
+<h2 id="快速原型开发"><a href="#快速原型开发" class="headerlink" title="快速原型开发"></a>快速原型开发</h2><blockquote>
+<p>可以快速识别.vue文件的插件</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install @vue-cli -g</span><br><span class="line">cnpm install -g @vue/cli-service-<span class="built_in">global</span></span><br><span class="line">vue serve App.vue</span><br></pre></td></tr></table></figure>
       
     </div>
     
+      
+        <a class= "readmore" href="/2020/08/14/Vue/">
+          阅读全文 <i class="fas fa-chevron-right"></i>
+        </a>
       
     
   </section>
@@ -1048,56 +1057,8 @@
       
     
       
-        <br>
-        <div class="social-wrapper">
-          
-            
-              <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="mailto:me@xxx.com"
-                class="social fas fa-envelope flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://github.com/xaoxuu"
-                class="social fab fa-github flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://music.163.com/#/user/home?id=63035382"
-                class="social fas fa-headphones-alt flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-        </div>
-      
-    
-      
-        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
-</div>
-      
-    
-      
-        Use
-        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        as theme, total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
-        
+	 <br>
+	  <p>由<a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>强力驱动</p>
       
     
       
