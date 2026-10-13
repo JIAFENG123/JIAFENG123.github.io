@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jia Feng — AI Application Engineer & Full-Stack Developer</title>
+  <meta name="description" content="Jia Feng 的个人主页 — AI 应用工程师、全栈开发者。专注 Agent 架构、全栈系统、跨端开发与 3D 交互。">
+  <style>
+    /* ==========================================================================
+       极简设计系统 (Swiss Minimalist)
+       去除所有非必要装饰，以排版层次、清晰网格与留白构建阅读质感
+       ========================================================================== */
+    :root {
+      --bg: #fcfcfc;
+      --text: #111111;
+      --text-secondary: #4b4b4b;
+      --text-muted: #787878;
+      --line: #e6e6e6;
+      --hover-color: #000000;
+      --tag-border: #e0e0e0;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --max-width: 620px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --text: #f0f0f0;
+        --text-secondary: #a0a0a0;
+        --text-muted: #6e6e6e;
+        --line: #242424;
+        --hover-color: #ffffff;
+        --tag-border: #2a2a2a;
+      }
+    }
+
+    [data-theme="light"] {
+      --bg: #fcfcfc;
+      --text: #111111;
+      --text-secondary: #4b4b4b;
+      --text-muted: #787878;
+      --line: #e6e6e6;
+      --hover-color: #000000;
+      --tag-border: #e0e0e0;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6e6e6e;
+      --line: #242424;
+      --hover-color: #ffffff;
+      --tag-border: #2a2a2a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 15px;
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      padding: 5rem 1.5rem 6.5rem;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       极简白描竹林画布 (从零慢慢拔节生长，丝滑柔和)
+       ========================================================================== */
+    #bambooCanvas {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    /* 顶栏 */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3.5rem;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-alias {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.9em;
+      margin-left: 0.35rem;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: color 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--hover-color);
+    }
+
+    /* 简介区 */
+    .intro {
+      margin-bottom: 3.25rem;
+    }
+
+    .intro h1 {
+      font-size: 1.55rem;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+      color: var(--text);
+    }
+
+    .intro .motto {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .intro p.bio {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* 区块通用结构 */
+    section {
+      margin-bottom: 3.25rem;
+    }
+
+    .section-title {
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* 当前动态 (Now) */
+    .now-box {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--line);
+      padding-left: 1rem;
+      line-height: 1.65;
+    }
+
+    .now-box .status-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      margin-right: 7px;
+      vertical-align: middle;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    }
+
+    /* 条目列表 */
+    .item-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .item-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: opacity 0.15s ease;
+    }
+
+    .item-title:hover {
+      opacity: 0.65;
+    }
+
+    .item-title .arrow {
+      font-size: 0.85em;
+      opacity: 0.5;
+    }
+
+    .item-meta {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 0.885rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .item-tags {
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    /* 技术领域网格 */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem 2rem;
+    }
+
+    .stack-category {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .stack-label {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .stack-items {
+      font-size: 0.885rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* 社交链接 */
+    .links-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .link-item a {
+      font-size: 0.9rem;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: border-color 0.15s ease, opacity 0.15s ease;
+    }
+
+    .link-item a:hover {
+      border-color: var(--hover-color);
+      opacity: 0.8;
+    }
+
+    /* 页脚 */
+    footer {
+      margin-top: 4.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 3.5rem 1.25rem 4.5rem;
+      }
+      .stack-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 极简东方白描竹林：初始绝对空白，从零慢慢破土拔节 -->
+  <canvas id="bambooCanvas"></canvas>
+
+  <main>
+    <!-- 顶栏：姓名与深浅色切换 -->
+    <header>
+      <a href="#" class="brand">Jia Feng</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换明暗主题">auto</button>
+    </header>
+
+    <!-- 个人介绍 / Bio -->
+    <section class="intro">
+      <h1>AI 应用工程师 · 全栈开发者</h1>
+      <p class="motto">「 把复杂的事拆开做，把简单的事做扎实 」</p>
+      <p class="bio">
+        专注于大模型（LLM）工程化落地、AI Agent 编排框架、跨平台独立应用及 Web 3D 拟真交互。坚持代码整洁与系统约束下的极致工程化，关注轻量、坚固与长久的工具创作。
+      </p>
+    </section>
+
+    <!-- 当前动态 / Now -->
+    <section>
+      <h2 class="section-title">当前状态 · Now</h2>
+      <div class="now-box">
+        <p>
+          <span class="status-dot"></span>
+          正推进 <strong>Agent Workbench</strong> 的生产级落地（基于 pgvector 向量检索、SSE 断线重连与崩溃对账架构），同时持续优化 Flutter 离线运动追踪工具与 Web 3D 渲染交互。
+        </p>
+      </div>
+    </section>
+
+    <!-- 最新核心项目 / Latest Projects（基于最新代码仓库） -->
+    <section>
+      <h2 class="section-title">最新作品 · Projects</h2>
+      <ul class="item-list">
+
+        <!-- Agent Workbench -->
+        <li class="item">
+          <div class="item-header">
+            <a href="https://github.com/JIAFENG123/agent-workbench" target="_blank" rel="noopener noreferrer" class="item-title">
+              Agent Workbench <span class="arrow">↗</span>
+            </a>
+            <span class="item-meta">2026 · AI 全栈</span>
+          </div>
+          <p class="item-desc">生产级 AI Agent 工作台：针对真实云环境资源约束设计。基于 pgvector 实现高效向量检索与 RAG 编排，支持 SSE 流式轨迹解析、断线自动重放与进程崩溃对账机制。</p>
+          <p class="item-tags">FastAPI · Nuxt 3 · pgvector · NVIDIA NIM · SSE · Tailwind v4</p>
+        </li>
+
+        <!-- Run Tracker -->
+        <li class="item">
+          <div class="item-header">
+            <a href="https://github.com/JIAFENG123/run_tracker" target="_blank" rel="noopener noreferrer" class="item-title">
+              Run Tracker <span class="arrow">↗</span>
+            </a>
+            <span class="item-meta">2026 · 移动端</span>
+          </div>
+          <p class="item-desc">纯本地“零成本”跑步记录与运动追踪 App：基于开源瓦片地图与硬件 GPS 追踪，离线 SQLite 隐私存储，内置动态配速图表、离线语音播报与标准 GPX 轨迹导出。</p>
+          <p class="item-tags">Flutter · Dart · OpenStreetMap · SQLite · GPX</p>
+        </li>
+
+        <!-- Realistic 3D Photo Album -->
+        <li class="item">
+          <div class="item-header">
+            <a href="https://github.com/JIAFENG123/photo-album-3d" target="_blank" rel="noopener noreferrer" class="item-title">
+              3D Photo Album & Experiments <span class="arrow">↗</span>
+            </a>
+            <span class="item-meta">2026 · WebGL / 3D</span>
+          </div>
+          <p class="item-desc">拟真 3D 交互翻页相册与空间视觉实验：支持鼠标拖拽动态翻页、全景 360° 自由视角缩放控制与流畅缓动物理反馈。</p>
+          <p class="item-tags">Three.js · GSAP · TypeScript · Vite</p>
+        </li>
+
+        <!-- mcp-sys-mon -->
+        <li class="item">
+          <div class="item-header">
+            <a href="https://github.com/JIAFENG123/mcp-sys-mon" target="_blank" rel="noopener noreferrer" class="item-title">
+              mcp-sys-mon <span class="arrow">↗</span>
+            </a>
+            <span class="item-meta">2026 · 工具链</span>
+          </div>
+          <p class="item-desc">基于 FastMCP 的轻量系统级监控 MCP Server，向大语言模型客户端暴露 CPU、内存、网络及进程诊断工具集，无缝融入自动化开发工作流。</p>
+          <p class="item-tags">Python · FastMCP · Model Context Protocol</p>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 真实工程实践 / Practice -->
+    <section>
+      <h2 class="section-title">工程沉淀 · Practice</h2>
+      <ul class="item-list">
+
+        <li class="item">
+          <div class="item-header">
+            <span class="item-title">小睿 · 多模态 AI 合规助手</span>
+            <span class="item-meta">LLM 交互与工程</span>
+          </div>
+          <p class="item-desc">面向文本与多模态图像的版权与合规风险检测，实现低延迟流式打字渲染、平滑自动滚动与结构化合规诊断报告实时解析呈现。</p>
+        </li>
+
+        <li class="item">
+          <div class="item-header">
+            <span class="item-title">StoryLab · 跨境 AI 商品素材平台</span>
+            <span class="item-meta">可视化引擎</span>
+          </div>
+          <p class="item-desc">基于 Canvas / Konva.js 自研高性能可视化编辑器，支持智能抠图、多图层混合合成、分割标注与营销图高清导出，结合大模型批量生成 Listing 描述。</p>
+        </li>
+
+        <li class="item">
+          <div class="item-header">
+            <span class="item-title">企业级运营中台架构演进</span>
+            <span class="item-meta">全栈重构</span>
+          </div>
+          <p class="item-desc">主导核心业务系统向 Nuxt 3 (SSR) 现代化工程架构平滑重构，梳理多租户权限隔离与计费链路，显著优化首屏性能与工程体验。</p>
+        </li>
+
+      </ul>
+    </section>
+
+    <!-- 技术栈 / Stack -->
+    <section>
+      <h2 class="section-title">技术栈 · Stack</h2>
+      <div class="stack-grid">
+        <div class="stack-category">
+          <span class="stack-label">AI & Agent</span>
+          <span class="stack-items">ReAct Agent, pgvector, RAG, FastMCP, Prompt Engineering</span>
+        </div>
+        <div class="stack-category">
+          <span class="stack-label">Backend & Cloud</span>
+          <span class="stack-items">Python (FastAPI), Node.js, NestJS, SQLite, PostgreSQL</span>
+        </div>
+        <div class="stack-category">
+          <span class="stack-label">Frontend & Mobile</span>
+          <span class="stack-items">Nuxt 3, Vue 3, Flutter, React, TypeScript, TailwindCSS</span>
+        </div>
+        <div class="stack-category">
+          <span class="stack-label">Graphics & Canvas</span>
+          <span class="stack-items">Three.js, Konva.js, Fabric.js, GSAP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 联系与社交 / Connect -->
+    <section>
+      <h2 class="section-title">联系方式 · Connect</h2>
+      <ul class="links-group">
+        <li class="link-item">
+          <a href="https://github.com/JIAFENG123" target="_blank" rel="noopener noreferrer">GitHub / JIAFENG123</a>
+        </li>
+        <li class="link-item">
+          <a href="mailto:xgg1232021@163.com">Email ↗</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <span>© 2026 Jia Feng</span>
+      <span>Keep it simple, make it solid.</span>
+    </footer>
+  </main>
+
+  <script>
+    // 极简明暗主题切换逻辑（auto -> dark -> light -> auto）
+    (function () {
+      const toggle = document.getElementById('themeToggle');
+      const root = document.documentElement;
+      const modes = ['auto', 'dark', 'light'];
+      
+      let saved = localStorage.getItem('theme-preference') || 'auto';
+      applyTheme(saved);
+
+      toggle.addEventListener('click', () => {
+        const nextIndex = (modes.indexOf(saved) + 1) % modes.length;
+        saved = modes[nextIndex];
+        localStorage.setItem('theme-preference', saved);
+        applyTheme(saved);
+        if (window.updateBambooTheme) window.updateBambooTheme();
+      });
+
+      function applyTheme(mode) {
+        if (mode === 'auto') {
+          root.removeAttribute('data-theme');
+          toggle.textContent = 'auto';
+        } else {
+          root.setAttribute('data-theme', mode);
+          toggle.textContent = mode;
+        }
+      }
+    })();
+
+    // ==========================================================================
+    // 极简东方工笔白描竹林 & 稳定平滑双雀航向物理引擎 (Rock-Solid Flight Engine)
+    // 1. 彻底消灭方向来回转：起飞即锁定航向(Facing Lock)，C形单调抛物贝塞尔航线(绝无S形折返)
+    // 2. 俯仰角低通平滑滤波：鸟身随轨迹柔和起伏，绝无高频颤动或倒栽葱
+    // 3. 终点动态连续吸附：进近拉平身体、平滑收折双翼、提前伸爪、触枝零跳跃
+    // ==========================================================================
+    (function () {
+      const canvas = document.getElementById('bambooCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = 0, height = 0, dpr = 1;
+      let strokeColor = 'rgba(22, 22, 22, 0.22)';
+      let startTime = null;
+
+      function getStrokeColor() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+          (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        return isDark ? 'rgba(238, 238, 238, 0.18)' : 'rgba(22, 22, 22, 0.22)';
+      }
+
+      window.updateBambooTheme = function () {
+        strokeColor = getStrokeColor();
+      };
+      strokeColor = getStrokeColor();
+
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+      function bezierPoint(p0, p1, p2, p3, t) {
+        const mt = 1 - t;
+        return mt * mt * mt * p0 + 3 * mt * mt * t * p1 + 3 * mt * t * t * p2 + t * t * t * p3;
+      }
+
+      let trees = [];
+      let birds = [];
+
+      function setupDimensions() {
+        dpr = window.devicePixelRatio || 1;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+        buildTrees();
+        initBirds();
+        startTime = performance.now();
+      }
+
+      function buildTrees() {
+        trees = [
+          // 【右侧主景】
+          // 1. 擎天主竿 (6节)
+          createTree({
+            id: 'right_main',
+            baseX: width - Math.min(width * 0.075, 76),
+            baseY: height + 10,
+            targetH: Math.min(height * 0.83, 780),
+            segCount: 6,
+            side: 'right',
+            curveFactor: -0.065,
+            lineWidth: 1.5,
+            startDelay: 400,
+            growDuration: 3800,
+            branchList: [
+              { seg: 2, side: -1, len: 62, angle: -0.68, leafCount: 3, isPerch: true },
+              { seg: 3, side: -1, len: 82, angle: -0.62, leafCount: 4, isPerch: true },
+              { seg: 4, side: -1, len: 74, angle: -0.58, leafCount: 4, isPerch: true },
+              { seg: 5, side: -1, len: 54, angle: -0.52, leafCount: 3 }
+            ]
+          }),
+          // 2. 右侧伴生次竿 (5节)
+          createTree({
+            id: 'right_sub',
+            baseX: width - Math.min(width * 0.026, 26),
+            baseY: height + 10,
+            targetH: Math.min(height * 0.58, 520),
+            segCount: 5,
+            side: 'right',
+            curveFactor: -0.045,
+            lineWidth: 1.25,
+            startDelay: 1300,
+            growDuration: 3200,
+            branchList: [
+              { seg: 2, side: -1, len: 52, angle: -0.66, leafCount: 3, isPerch: true },
+              { seg: 3, side: -1, len: 62, angle: -0.60, leafCount: 3, isPerch: true },
+              { seg: 4, side: -1, len: 42, angle: -0.54, leafCount: 3 }
+            ]
+          }),
+          // 3. 右侧初生矮竹 (3节)
+          createTree({
+            id: 'right_low',
+            baseX: width - Math.min(width * 0.12, 125),
+            baseY: height + 10,
+            targetH: Math.min(height * 0.34, 300),
+            segCount: 3,
+            side: 'right',
+            curveFactor: -0.035,
+            lineWidth: 1.0,
+            startDelay: 2000,
+            growDuration: 2400,
+            branchList: [
+              { seg: 1, side: -1, len: 38, angle: -0.62, leafCount: 3 },
+              { seg: 2, side: -1, len: 32, angle: -0.56, leafCount: 2 }
+            ]
+          }),
+
+          // 【左侧客景】
+          // 4. 左侧清秀倚竹 (4节)
+          createTree({
+            id: 'left_main',
+            baseX: Math.min(width * 0.05, 52),
+            baseY: height + 10,
+            targetH: Math.min(height * 0.53, 480),
+            segCount: 4,
+            side: 'left',
+            curveFactor: 0.055,
+            lineWidth: 1.3,
+            startDelay: 800,
+            growDuration: 3400,
+            branchList: [
+              { seg: 1, side: 1, len: 54, angle: -0.32, leafCount: 3, isPerch: true },
+              { seg: 2, side: 1, len: 66, angle: -0.38, leafCount: 4, isPerch: true },
+              { seg: 3, side: 1, len: 48, angle: -0.42, leafCount: 3 }
+            ]
+          }),
+          // 5. 左侧幼竹 (3节)
+          createTree({
+            id: 'left_low',
+            baseX: Math.min(width * 0.016, 18),
+            baseY: height + 10,
+            targetH: Math.min(height * 0.29, 260),
+            segCount: 3,
+            side: 'left',
+            curveFactor: 0.038,
+            lineWidth: 0.95,
+            startDelay: 2200,
+            growDuration: 2200,
+            branchList: [
+              { seg: 1, side: 1, len: 36, angle: -0.34, leafCount: 3 },
+              { seg: 2, side: 1, len: 28, angle: -0.40, leafCount: 2 }
+            ]
+          })
+        ];
+      }
+
+      function createTree(cfg) {
+        const segLen = cfg.targetH / cfg.segCount;
+        const nodes = [];
+        let curX = cfg.baseX;
+        let curY = cfg.baseY;
+
+        for (let i = 0; i <= cfg.segCount; i++) {
+          nodes.push({ x: curX, y: curY });
+          const progress = i / cfg.segCount;
+          const curveOffset = Math.sin(progress * Math.PI) * (cfg.targetH * cfg.curveFactor * 0.32);
+          curX = cfg.baseX + (cfg.targetH * cfg.curveFactor * progress) + curveOffset;
+          curY = cfg.baseY - (segLen * i);
+        }
+
+        const branches = [];
+        cfg.branchList.forEach((bCfg, bIdx) => {
+          if (bCfg.seg >= nodes.length - 1) return;
+          const n1 = nodes[bCfg.seg];
+          const n2 = nodes[bCfg.seg + 1];
+          const origX = n1.x + (n2.x - n1.x) * 0.22;
+          const origY = n1.y + (n2.y - n1.y) * 0.22;
+
+          const angleRad = bCfg.angle * Math.PI;
+          const targetX = origX + Math.cos(angleRad) * bCfg.len;
+          const targetY = origY + Math.sin(angleRad) * bCfg.len;
+          const ctrlX = origX + Math.cos(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bCfg.len * 0.52);
+          const ctrlY = origY + Math.sin(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bCfg.len * 0.52);
+
+          const segFinishTime = cfg.startDelay + (cfg.growDuration * ((bCfg.seg + 1) / cfg.segCount));
+          const branchStartTime = segFinishTime + 220;
+          const branchDur = 850;
+
+          const leaves = [];
+          const leafSpreads = [-0.24, 0.04, 0.30, 0.54];
+          const leafLens = [48, 54, 42, 35];
+          const leafWidths = [5.6, 6.2, 5.0, 4.4];
+
+          for (let l = 0; l < bCfg.leafCount; l++) {
+            const lAngle = angleRad + (leafSpreads[l % leafSpreads.length] * bCfg.side);
+            leaves.push({
+              angle: lAngle,
+              length: leafLens[l % leafLens.length],
+              width: leafWidths[l % leafWidths.length],
+              droop: 0.08 + l * 0.025,
+              startTime: branchStartTime + branchDur + (l * 180),
+              duration: 900
+            });
+          }
+
+          branches.push({
+            id: cfg.id + '_b_' + bIdx,
+            origX, origY,
+            targetX, targetY,
+            ctrlX, ctrlY,
+            startTime: branchStartTime,
+            duration: branchDur,
+            isPerch: !!bCfg.isPerch,
+            segIndex: bCfg.seg,
+            weightLoad: 0,
+            springVelocity: 0,
+            targetWeight: 0,
+            leaves
+          });
+        });
+
+        return { cfg, nodes, branches };
+      }
+
+      // ======================================================================
+      // 差异化灵动双雀系统 (Differential Twin Birds: Long-tail & Short-tail)
+      // ======================================================================
+      function initBirds() {
+        birds = [
+          // 鸟1：仙气长尾雀（绶带仙禽风格），体态修长，双缕飘逸长尾羽
+          createBird({
+            id: 'bird_alpha',
+            name: '长尾雀',
+            tailType: 'long',
+            scale: 1.05,
+            activeDelay: 5800,
+            startPos: { x: width + 60, y: height * 0.22 },
+            flapSpeed: 0.28,
+            weightForce: 1.05
+          }),
+          // 鸟2：机敏短尾雀（小山雀风格），丰胸小巧，灵巧短翘燕尾
+          createBird({
+            id: 'bird_beta',
+            name: '短尾山雀',
+            tailType: 'short',
+            scale: 0.88,
+            activeDelay: 7800,
+            startPos: { x: -50, y: height * 0.16 },
+            flapSpeed: 0.38,
+            weightForce: 0.72
+          })
+        ];
+      }
+
+      function createBird(cfg) {
+        return {
+          cfg,
+          state: 'WAITING',
+          x: cfg.startPos.x,
+          y: cfg.startPos.y,
+          facing: 1,          // 航向严格锁定：1 = 向右, -1 = 向左 (落地后绝对不立即调头)
+          pitch: 0,           // 局部平滑俯仰角
+          wingPhase: Math.random() * Math.PI,
+          wingFoldProg: 0,
+          clawReachProg: 0,
+          isGliding: false,
+          perchTarget: null,
+          flightPath: null,
+          perchTimer: 0,
+          perchDuration: 0,
+          headTurn: 0,
+          tailTilt: 0,
+          breathPhase: Math.random() * Math.PI,
+          // 真实物理弹簧阻尼吸震模型（彻底取代阶跃跳变的 kneeBend）
+          shockPos: 0,        // 腿部与身躯屈膝缓冲位移 (像素)
+          shockVel: 0,        // 垂直冲击阻尼速度
+          hasTurned: false,   // 驻足期间是否已做过换向小跳
+          hopOffset: 0        // 换向轻跃位移
+        };
+      }
+
+      function getPerchClawPos(target, now) {
+        if (!target) return { x: width - 110, y: height * 0.45, angle: 0 };
+        const { tree, branch } = target;
+        const totalSegs = tree.nodes.length - 1;
+        const timeSec = (now - startTime) * 0.001;
+        const gentleBreeze = Math.sin(timeSec * 0.8) * 1.6;
+
+        const breezeSway = gentleBreeze * Math.pow(branch.segIndex / totalSegs, 1.8) * (tree.cfg.side === 'right' ? 1 : 0.8);
+        const gravitySagY = (branch.weightLoad || 0) * 13.0;
+        const gravitySagX = (branch.weightLoad || 0) * (tree.cfg.side === 'right' ? -4.5 : 4.5);
+        const gravitySagAngle = (branch.weightLoad || 0) * (tree.cfg.side === 'right' ? 0.07 : -0.07);
+
+        return {
+          x: branch.targetX + breezeSway * 1.5 + gravitySagX,
+          y: branch.targetY + gravitySagY,
+          angle: (breezeSway * 0.016) + gravitySagAngle
+        };
+      }
+
+      // 【核心单调贝塞尔航线】：X轴严格单向推进，Y轴向上拱出从容滑翔弧
+      function generateFlightPath(fromP, toP) {
+        const dx = toP.x - fromP.x;
+        const dy = toP.y - fromP.y;
+        const dist = Math.hypot(dx, dy);
+
+        // 航向严格锁定：起飞那一刻由位移大方向决定
+        const flightFacing = (dx >= 0) ? 1 : -1;
+
+        // 向上拱起的平滑弧度 (真鸟滑翔弧)
+        const arcHeight = Math.min(200, Math.max(90, dist * 0.32));
+        const minY = Math.min(fromP.y, toP.y) - arcHeight;
+
+        // X轴按 35% 和 68% 严格单调推进，消除任何中途横向折返
+        const cp1x = fromP.x + dx * 0.35;
+        const cp1y = minY;
+        const cp2x = fromP.x + dx * 0.68;
+        const cp2y = minY + (toP.y - minY) * 0.25;
+
+        const duration = Math.min(5800, Math.max(3600, dist * 6.8));
+
+        return {
+          p0: { x: fromP.x, y: fromP.y },
+          p1: { x: cp1x, y: cp1y },
+          p2: { x: cp2x, y: cp2y },
+          p3: { x: toP.x, y: toP.y },
+          flightFacing,
+          startTime: performance.now(),
+          duration
+        };
+      }
+
+      function chooseNextPerch(currentPerch, excludePerch) {
+        const candidates = [];
+        trees.forEach(tree => {
+          tree.branches.forEach(branch => {
+            if (branch.isPerch) {
+              candidates.push({ tree, branch });
+            }
+          });
+        });
+        if (!candidates.length) return null;
+        const filtered = candidates.filter(c => {
+          const isSame = currentPerch && (c.branch === currentPerch.branch);
+          const isOccupy = excludePerch && (c.branch === excludePerch.branch);
+          return !isSame && !isOccupy;
+        });
+        const pool = filtered.length ? filtered : candidates;
+        return pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      function updateBranchPhysics() {
+        trees.forEach(tree => {
+          tree.branches.forEach(branch => {
+            if (branch.targetWeight !== undefined) {
+              // 临界阻尼弹性物理：单阶段丝滑下沉并稳定，无任何二次顿挫与下沉抽动
+              const force = (branch.targetWeight - branch.weightLoad) * 0.14;
+              branch.springVelocity = (branch.springVelocity + force) * 0.76;
+              branch.weightLoad += branch.springVelocity;
+            }
+          });
+        });
+      }
+
+      function updateBirds(now) {
+        const elapsed = now - startTime;
+
+        birds.forEach((b, idx) => {
+          const otherBird = birds[1 - idx];
+          const otherPerch = (otherBird && otherBird.state === 'PERCHED') ? otherBird.perchTarget : null;
+
+          // 物理阻尼弹簧更新 (模拟鸟儿触枝与停驻时的腿部减震)
+          const springK = 0.28;
+          const springDamp = 0.72;
+          b.shockVel += (-springK * b.shockPos) - b.shockVel * (1 - springDamp);
+          b.shockPos += b.shockVel;
+
+          if (b.state === 'WAITING') {
+            if (elapsed >= b.cfg.activeDelay) {
+              b.perchTarget = chooseNextPerch(null, otherPerch);
+              const clawTarget = getPerchClawPos(b.perchTarget, now);
+              const startTarget = { x: clawTarget.x, y: clawTarget.y - 6.5 };
+              b.flightPath = generateFlightPath(b.cfg.startPos, startTarget);
+              b.facing = b.flightPath.flightFacing; // 航向立即锁定
+              b.state = 'FLYING';
+              b.wingFoldProg = 0;
+              b.clawReachProg = 0;
+              b.shockPos = 0;
+              b.shockVel = 0;
+            }
+            return;
+          }
+
+          if (b.state === 'FLYING') {
+            const path = b.flightPath;
+            const flightElapsed = now - path.startTime;
+            const progress = Math.min(1, flightElapsed / path.duration);
+            const t = easeInOutCubic(progress);
+
+            // 1. 基础单调贝塞尔位置
+            const rawX = bezierPoint(path.p0.x, path.p1.x, path.p2.x, path.p3.x, t);
+            const rawY = bezierPoint(path.p0.y, path.p1.y, path.p2.y, path.p3.y, t);
+
+            // 2. 动态终点连续平滑吸附 (与随风晃动的竹枝无缝吻合)
+            let curX = rawX;
+            let curY = rawY;
+            let liveTarget = null;
+
+            if (progress > 0.65 && b.perchTarget) {
+              const perchPos = getPerchClawPos(b.perchTarget, now);
+              liveTarget = { x: perchPos.x, y: perchPos.y - 6.5, angle: perchPos.angle };
+              const blendFactor = easeInOutCubic((progress - 0.65) / 0.35);
+              curX = rawX * (1 - blendFactor) + liveTarget.x * blendFactor;
+              curY = rawY * (1 - blendFactor) + liveTarget.y * blendFactor;
+            }
+
+            // 3. 向后微小差分计算平滑切线
+            const prevT = Math.max(0, t - 0.015);
+            let prevRawX = bezierPoint(path.p0.x, path.p1.x, path.p2.x, path.p3.x, prevT);
+            let prevRawY = bezierPoint(path.p0.y, path.p1.y, path.p2.y, path.p3.y, prevT);
+
+            if (prevT > 0.65 && b.perchTarget) {
+              const prevBlend = easeInOutCubic((prevT - 0.65) / 0.35);
+              const livePrev = getPerchClawPos(b.perchTarget, now);
+              prevRawX = prevRawX * (1 - prevBlend) + livePrev.x * prevBlend;
+              prevRawY = prevRawY * (1 - prevBlend) + (livePrev.y - 6.5) * prevBlend;
+            }
+
+            const vx = curX - prevRawX;
+            const vy = curY - prevRawY;
+
+            b.x = curX;
+            b.y = curY;
+
+            // 4. 【核心航向锁定】：严格使用起飞时确定的航向，中途绝不抽搐
+            b.facing = path.flightFacing;
+
+            // 5. 目标俯仰角计算
+            let desiredPitch = (b.facing === 1) ? Math.atan2(vy, Math.abs(vx) + 0.001) : Math.atan2(vy, -Math.abs(vx) - 0.001);
+            desiredPitch = Math.max(-0.62, Math.min(0.62, desiredPitch));
+
+            // 降落进近平滑对准竹枝角度 (Flare 拉平姿态)
+            if (progress > 0.70 && liveTarget) {
+              const flareBlend = easeInOutCubic((progress - 0.70) / 0.30);
+              const targetStandPitch = (liveTarget.angle || 0);
+              desiredPitch = desiredPitch * (1 - flareBlend) + targetStandPitch * flareBlend;
+            }
+
+            // 低通滤波平滑俯仰角度追踪
+            b.pitch += (desiredPitch - b.pitch) * 0.18;
+
+            // 6. 扇翅与滑翔 (进近阶段自然转为展翼滑翔)
+            if (progress > 0.72) {
+              b.isGliding = true;
+            } else {
+              const flapCycle = ((flightElapsed + idx * 400) % 1700);
+              if (flapCycle < 700) {
+                b.isGliding = false;
+                b.wingPhase += b.cfg.flapSpeed;
+              } else {
+                b.isGliding = true;
+              }
+            }
+
+            // 7. 进近平滑收翅与伸爪 (空中不提前压弯竹枝)
+            if (progress > 0.72) {
+              const foldProgress = easeInOutCubic((progress - 0.72) / 0.28);
+              b.wingFoldProg = foldProgress;
+              b.clawReachProg = foldProgress;
+            } else {
+              b.wingFoldProg = 0;
+              b.clawReachProg = 0;
+            }
+
+            // 8. 触枝落爪 (Touchdown - 触枝瞬间重力自然发生，无任何滞后顿挫)
+            if (progress >= 1) {
+              b.state = 'PERCHED';
+              b.wingFoldProg = 1;
+              b.clawReachProg = 1;
+              b.perchTimer = now;
+              b.perchDuration = 5200 + Math.random() * 4500 + idx * 900;
+              b.hasTurned = false;
+              b.hopOffset = 0;
+
+              // 小鸟自身轻微屈膝卸力
+              b.shockPos = 0;
+              b.shockVel = 0.95;
+
+              // 【核心修复】：爪触枝条瞬间才施加重力，且只施加柔和阻尼初速度，竹枝自然顺滑下弯，绝无突兀顿挫！
+              if (b.perchTarget) {
+                b.perchTarget.branch.targetWeight = b.cfg.weightForce;
+                b.perchTarget.branch.springVelocity = 0.08 * b.cfg.weightForce;
+              }
+            }
+          } else if (b.state === 'PERCHED') {
+            const clawPos = getPerchClawPos(b.perchTarget, now);
+            b.x = clawPos.x;
+            b.y = clawPos.y - 6.5 - (b.hopOffset || 0);
+            b.pitch += (clawPos.angle - b.pitch) * 0.16; // 顺应竹枝微风晃动
+
+            b.wingFoldProg = 1;
+            b.clawReachProg = 1;
+
+            const pTime = now - b.perchTimer;
+            b.breathPhase += 0.038;
+
+            // 【彻底杜绝飞落后立即反向】：刚落地绝对保持着陆惯性航向不变！
+            // 顾盼主要靠头部好奇转动 (headTurn)，动作自然逼真
+            b.headTurn = Math.sin(pTime * 0.0026 + idx * 1.5) * 0.16;
+            b.tailTilt = Math.sin(pTime * 0.0038 + idx) * (b.cfg.tailType === 'long' ? 0.28 : 0.15);
+
+            // 驻足期满起飞 (重力归零，竹枝优雅弹起复位)
+            if (pTime >= b.perchDuration) {
+              if (b.perchTarget) {
+                b.perchTarget.branch.targetWeight = 0;
+                b.perchTarget.branch.springVelocity = -0.16 * b.cfg.weightForce;
+              }
+
+              const fromPt = { x: b.x, y: b.y };
+              b.perchTarget = chooseNextPerch(b.perchTarget, otherPerch);
+              const toClaw = getPerchClawPos(b.perchTarget, now);
+              const toPt = { x: toClaw.x, y: toClaw.y - 6.5 };
+              b.flightPath = generateFlightPath(fromPt, toPt);
+              b.facing = b.flightPath.flightFacing; // 起飞锁定新航向
+              b.state = 'FLYING';
+              b.wingFoldProg = 0;
+              b.clawReachProg = 0;
+              b.shockPos = 0;
+              b.shockVel = -0.5; // 起飞轻微向上弹跳
+            }
+          }
+        });
+      }
+
+      // ======================================================================
+      // 差异化白描双雀绘制函数 (Long-tail Streamer Bird vs Short-tail Perky Tit)
+      // ======================================================================
+      function drawRealisticBird(ctx, b) {
+        if (!b || b.state === 'WAITING') return;
+
+        ctx.save();
+        ctx.translate(b.x, b.y);
+
+        // 统一姿态变换：面向由 b.facing 决定，俯仰由 b.pitch 决定，Y轴永远为正
+        ctx.scale((b.facing || 1) * b.cfg.scale, b.cfg.scale);
+        ctx.rotate(b.pitch || 0);
+
+        ctx.strokeStyle = strokeColor;
+        ctx.fillStyle = strokeColor;
+        ctx.lineWidth = 1.0;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        const tailType = b.cfg.tailType || 'long';
+        const fold = b.wingFoldProg || 0;
+        const clawReach = b.clawReachProg || 0;
+
+        const flapWing = Math.sin(b.wingPhase);
+        const wingYOffset = flapWing * 7.5 * (1 - fold);
+
+        const isPerched = (b.state === 'PERCHED');
+        const headT = isPerched ? (b.headTurn || 0) : 0;
+        const tailT = isPerched ? (b.tailTilt || 0) : 0;
+        const breath = isPerched ? Math.sin(b.breathPhase) * 0.35 : 0;
+        // 丝滑屈膝缓冲量：由阻尼弹簧连续驱动，绝无阶跃
+        const knee = (b.shockPos || 0) * 1.5;
+
+        if (tailType === 'long') {
+          // ==================================================================
+          // 【长尾雀 · 绶带风格】：体态秀美修长，清秀长喙，双缕飘逸长尾羽
+          // ==================================================================
+
+          // 1. 修长白描细喙
+          ctx.beginPath();
+          ctx.moveTo(8.0 + headT * 2, -2.4 + headT + knee * 0.3);
+          ctx.lineTo(14.2 + headT * 2, -1.2 + headT + knee * 0.3);
+          ctx.lineTo(8.0 + headT * 2, 0.0 + headT + knee * 0.3);
+          ctx.moveTo(8.0 + headT * 2, -1.2 + headT + knee * 0.3);
+          ctx.lineTo(12.8 + headT * 2, -1.2 + headT + knee * 0.3);
+          ctx.stroke();
+
+          // 2. 秀丽额顶至长流线颈背
+          ctx.beginPath();
+          ctx.moveTo(8.0 + headT * 2, -2.4 + headT + knee * 0.3);
+          ctx.quadraticCurveTo(5.6, -6.2 + knee * 0.3, 1.2, -5.6 + knee * 0.3);
+          ctx.quadraticCurveTo(-4.5, -4.8 + knee * 0.3, -8.6, -1.2 + knee * 0.3);
+          ctx.stroke();
+
+          // 3. 喉、胸与纤细腹底
+          ctx.beginPath();
+          ctx.moveTo(8.0 + headT * 2, 0.0 + headT + knee * 0.3);
+          ctx.quadraticCurveTo(6.5, 2.2 + breath + knee, 1.8, 3.2 + breath + knee);
+          ctx.quadraticCurveTo(-3.8, 3.5 + breath + knee, -7.8, 1.5 + knee * 0.5);
+          ctx.stroke();
+
+          // 4. 【标志性双缕仙气长尾羽】
+          ctx.beginPath();
+          if (fold < 0.6) {
+            // 飞行中：双长尾翎向后舒展飘扬 (长达 -32px)
+            ctx.moveTo(-8.6, -1.2);
+            ctx.quadraticCurveTo(-18.5, -1.8, -32.0, -2.8);
+            ctx.quadraticCurveTo(-22.5, 0.5, -13.5, 1.0);
+            ctx.lineTo(-28.5, 4.0);
+            ctx.quadraticCurveTo(-19.5, 3.2, -7.8, 1.5);
+            ctx.stroke();
+            // 羽中轴细线
+            ctx.beginPath();
+            ctx.moveTo(-8.6, -0.6);
+            ctx.quadraticCurveTo(-18.5, -1.2, -27.5, -2.2);
+            ctx.stroke();
+          } else {
+            // 驻足停歇：双长翎顺枝优雅垂挂，随微风与呼吸轻扬
+            const lTailT = tailT * 2.6;
+            ctx.moveTo(-8.6, -1.2 + knee * 0.3);
+            ctx.quadraticCurveTo(-15.5, 2.0 + lTailT * 0.5, -29.5, 6.8 + lTailT);
+            ctx.quadraticCurveTo(-20.5, 4.5 + lTailT * 0.6, -14.0, 3.2 + lTailT * 0.4);
+            ctx.lineTo(-27.0, 10.2 + lTailT * 1.2);
+            ctx.quadraticCurveTo(-16.5, 6.0 + lTailT * 0.7, -7.8, 1.5 + knee * 0.5);
+            ctx.stroke();
+            // 翎轴细线
+            ctx.beginPath();
+            ctx.moveTo(-8.6, -0.4 + knee * 0.3);
+            ctx.quadraticCurveTo(-16.5, 2.8 + lTailT * 0.5, -26.0, 7.5 + lTailT);
+            ctx.stroke();
+          }
+
+          // 5. 神采灵秀眼
+          ctx.beginPath();
+          ctx.arc(4.8 + headT * 2, -3.2 + headT + knee * 0.3, 0.65, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 6. 舒展双翅
+          if (fold > 0.85) {
+            ctx.beginPath();
+            ctx.moveTo(1.2, -4.6 + knee * 0.4);
+            ctx.quadraticCurveTo(-3.8, -3.5, -9.0, -0.2);
+            ctx.quadraticCurveTo(-4.2, -1.0, 1.2, -4.6 + knee * 0.4);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(-3.0, -2.5);
+            ctx.quadraticCurveTo(-8.5, 0.5, -14.0, 2.2 + tailT);
+            ctx.quadraticCurveTo(-8.0, 1.2, -3.0, -2.5);
+            ctx.stroke();
+          } else {
+            const spread = (1 - fold);
+            ctx.beginPath();
+            ctx.moveTo(0, -3.0);
+            ctx.quadraticCurveTo(-3 * spread, (-12 - wingYOffset * 0.7) * spread, 1 * spread, (-19 - wingYOffset * 0.8) * spread);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(2.0, -2.2);
+            ctx.quadraticCurveTo(-1.5 * spread, (-10.5 + wingYOffset) * spread, 3.5, (-19 + wingYOffset * 1.3) * spread);
+            ctx.lineTo(1.5, (-17 + wingYOffset * 1.2) * spread);
+            ctx.lineTo(0.5, (-14.5 + wingYOffset * 1.1) * spread);
+            ctx.quadraticCurveTo(-2.0, (-8.5 + wingYOffset * 0.6) * spread, -7.0, -0.5);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(0, -3.2);
+            ctx.quadraticCurveTo(-1.5, (-9.5 + wingYOffset * 0.7) * spread, 0.5, (-14 + wingYOffset * 0.9) * spread);
+            ctx.stroke();
+          }
+
+        } else {
+          // ==================================================================
+          // 【短尾雀 · 山雀风格】：体型圆润萌秀，丰胸圆腹，机敏短翘燕尾
+          // ==================================================================
+
+          // 1. 精巧圆锥短喙
+          ctx.beginPath();
+          ctx.moveTo(7.2 + headT * 2, -1.8 + headT + knee * 0.3);
+          ctx.lineTo(11.2 + headT * 2, -0.8 + headT + knee * 0.3);
+          ctx.lineTo(7.2 + headT * 2, 0.2 + headT + knee * 0.3);
+          ctx.moveTo(7.2 + headT * 2, -0.8 + headT + knee * 0.3);
+          ctx.lineTo(10.2 + headT * 2, -0.8 + headT + knee * 0.3);
+          ctx.stroke();
+
+          // 2. 圆润小脑门至颈背
+          ctx.beginPath();
+          ctx.moveTo(7.2 + headT * 2, -1.8 + headT + knee * 0.3);
+          ctx.quadraticCurveTo(5.0, -6.8 + knee * 0.3, 0.2, -6.2 + knee * 0.3);
+          ctx.quadraticCurveTo(-4.2, -5.0 + knee * 0.3, -7.8, -1.2 + knee * 0.3);
+          ctx.stroke();
+
+          // 3. 【山雀丰胸与圆腹】
+          ctx.beginPath();
+          ctx.moveTo(7.2 + headT * 2, 0.2 + headT + knee * 0.3);
+          ctx.quadraticCurveTo(7.2, 3.6 + breath + knee, 1.8, 4.6 + breath + knee);
+          ctx.quadraticCurveTo(-3.5, 4.5 + breath + knee, -7.2, 1.6 + knee * 0.5);
+          ctx.stroke();
+
+          // 4. 【机敏短翘燕尾羽】 (约 -12px)
+          ctx.beginPath();
+          if (fold < 0.6) {
+            // 飞行中：短促利落的小燕羽
+            ctx.moveTo(-7.8, -1.2);
+            ctx.lineTo(-14.2, -1.8);
+            ctx.lineTo(-11.5, 0.6);
+            ctx.lineTo(-14.8, 2.6);
+            ctx.lineTo(-7.2, 1.6);
+          } else {
+            // 驻足停歇：短尾微翘 15°，机灵俏皮
+            const sTailT = tailT * 1.4;
+            ctx.moveTo(-7.8, -1.2 + knee * 0.3);
+            ctx.quadraticCurveTo(-10.2, -1.8 + sTailT, -14.2, -0.6 + sTailT);
+            ctx.lineTo(-12.0, 1.2 + sTailT);
+            ctx.lineTo(-13.8, 3.2 + sTailT);
+            ctx.quadraticCurveTo(-9.8, 2.5 + sTailT, -7.2, 1.6 + knee * 0.5);
+          }
+          ctx.stroke();
+
+          // 5. 大而机灵的圆眼
+          ctx.beginPath();
+          ctx.arc(4.5 + headT * 2, -3.2 + headT + knee * 0.3, 0.74, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 6. 灵巧紧致短双翅
+          if (fold > 0.85) {
+            ctx.beginPath();
+            ctx.moveTo(0.8, -4.8 + knee * 0.4);
+            ctx.quadraticCurveTo(-3.2, -3.2, -8.0, 0.2);
+            ctx.quadraticCurveTo(-3.8, -0.8, 0.8, -4.8 + knee * 0.4);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(-2.5, -2.2);
+            ctx.quadraticCurveTo(-6.5, 0.5, -11.0, 2.0 + tailT);
+            ctx.quadraticCurveTo(-6.2, 1.0, -2.5, -2.2);
+            ctx.stroke();
+          } else {
+            const spread = (1 - fold);
+            ctx.beginPath();
+            ctx.moveTo(0, -3.0);
+            ctx.quadraticCurveTo(-2.5 * spread, (-10 - wingYOffset * 0.7) * spread, 1 * spread, (-15 - wingYOffset * 0.8) * spread);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(1.8, -2.0);
+            ctx.quadraticCurveTo(-1.2 * spread, (-9.0 + wingYOffset) * spread, 3.0, (-15 + wingYOffset * 1.3) * spread);
+            ctx.lineTo(1.2, (-13.5 + wingYOffset * 1.2) * spread);
+            ctx.lineTo(0.4, (-11.5 + wingYOffset * 1.1) * spread);
+            ctx.quadraticCurveTo(-1.8, (-7.0 + wingYOffset * 0.6) * spread, -6.0, -0.2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(0, -3.0);
+            ctx.quadraticCurveTo(-1.2, (-8.0 + wingYOffset * 0.7) * spread, 0.5, (-11 + wingYOffset * 0.9) * spread);
+            ctx.stroke();
+          }
+        }
+
+        // 7. 抱枝双爪 (根据进近与停立平滑浮现并握枝)
+        if (clawReach > 0.05) {
+          ctx.save();
+          ctx.globalAlpha = (ctx.globalAlpha || 1) * clawReach;
+          ctx.beginPath();
+          ctx.moveTo(0.5, 3.5 + breath + knee);
+          ctx.lineTo(1.2, 6.5);
+          ctx.lineTo(4.0, 6.8);
+          ctx.moveTo(1.2, 6.5);
+          ctx.lineTo(-1.0, 6.8);
+          ctx.moveTo(-2.2, 3.5 + breath + knee);
+          ctx.lineTo(-1.6, 6.5);
+          ctx.lineTo(1.2, 6.8);
+          ctx.moveTo(-1.6, 6.5);
+          ctx.lineTo(-3.8, 6.8);
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        ctx.restore();
+      }
+
+      // 核心渲染循环
+      function renderLoop(now) {
+        if (!startTime) startTime = now;
+        ctx.clearRect(0, 0, width, height);
+
+        const timeSec = (now - startTime) * 0.001;
+        const gentleBreeze = Math.sin(timeSec * 0.8) * 1.6 + Math.cos(timeSec * 1.3) * 0.7;
+
+        ctx.strokeStyle = strokeColor;
+        ctx.fillStyle = strokeColor;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        updateBranchPhysics();
+
+        // 1. 绘制竹林
+        trees.forEach(tree => {
+          const { cfg, nodes, branches } = tree;
+          const elapsed = now - startTime - cfg.startDelay;
+          if (elapsed <= 0) return;
+
+          const treeProgress = Math.min(1, elapsed / cfg.growDuration);
+          const totalSegs = nodes.length - 1;
+          const curFloatSeg = treeProgress * totalSegs;
+
+          ctx.lineWidth = cfg.lineWidth;
+
+          for (let i = 0; i < totalSegs; i++) {
+            if (i > curFloatSeg) break;
+
+            const segProgress = Math.min(1, curFloatSeg - i);
+            const easedSeg = easeInOutCubic(segProgress);
+
+            const n1 = nodes[i];
+            const n2 = nodes[i + 1];
+
+            const sway1 = gentleBreeze * Math.pow(i / totalSegs, 1.8) * (cfg.side === 'right' ? 1 : 0.8);
+            const sway2 = gentleBreeze * Math.pow((i + 1) / totalSegs, 1.8) * (cfg.side === 'right' ? 1 : 0.8);
+
+            const startX = n1.x + sway1;
+            const startY = n1.y;
+            const targetEndX = n2.x + sway2;
+            const targetEndY = n2.y;
+
+            const curEndX = startX + (targetEndX - startX) * easedSeg;
+            const curEndY = startY + (targetEndY - startY) * easedSeg;
+
+            const midX = (startX + curEndX) / 2;
+            const midY = (startY + curEndY) / 2;
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.quadraticCurveTo(midX, midY, curEndX, curEndY);
+            ctx.stroke();
+
+            // 节环
+            if (i > 0 && segProgress > 0.65) {
+              const ringAlpha = Math.min(1, (segProgress - 0.65) * 2.8);
+              ctx.save();
+              ctx.globalAlpha = ringAlpha;
+              const rw = 4.2 * cfg.lineWidth;
+              ctx.beginPath();
+              ctx.moveTo(startX - rw, startY + 0.6);
+              ctx.quadraticCurveTo(startX, startY - 1.2, startX + rw, startY + 0.6);
+              ctx.stroke();
+              ctx.restore();
+            }
+          }
+
+          // 2. 绘制抽枝
+          branches.forEach(b => {
+            const bElapsed = now - startTime - b.startTime;
+            if (bElapsed <= 0) return;
+
+            const bProg = easeOutCubic(Math.min(1, bElapsed / b.duration));
+            const bSway = gentleBreeze * 1.5;
+
+            const gravityBendY = (b.weightLoad || 0) * 13.0;
+            const gravityBendX = (b.weightLoad || 0) * (cfg.side === 'right' ? -4.5 : 4.5);
+
+            const fromX = b.origX + bSway * 0.2;
+            const fromY = b.origY;
+            const fullToX = b.targetX + bSway + gravityBendX;
+            const fullToY = b.targetY + gravityBendY;
+
+            const curToX = fromX + (fullToX - fromX) * bProg;
+            const curToY = fromY + (fullToY - fromY) * bProg;
+            const curCtrlX = fromX + (b.ctrlX + bSway * 0.5 + gravityBendX * 0.7 - fromX) * bProg;
+            const curCtrlY = fromY + (b.ctrlY + gravityBendY * 1.2 - fromY) * bProg;
+
+            ctx.lineWidth = cfg.lineWidth * 0.72;
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.quadraticCurveTo(curCtrlX, curCtrlY, curToX, curToY);
+            ctx.stroke();
+
+            // 3. 绘制工笔柳叶竹叶
+            b.leaves.forEach(leaf => {
+              const lElapsed = now - startTime - leaf.startTime;
+              if (lElapsed <= 0) return;
+
+              const lProg = easeOutCubic(Math.min(1, lElapsed / leaf.duration));
+              const leafLen = leaf.length * lProg;
+              if (leafLen <= 0.8) return;
+
+              const windFlutter = Math.sin(timeSec * 1.8 + leaf.angle * 2) * 0.04;
+              const extraDroop = (b.weightLoad || 0) * 0.09;
+              const actAngle = leaf.angle + windFlutter + (leaf.droop * (1 - lProg * 0.2)) + extraDroop;
+
+              const tipX = fullToX + Math.cos(actAngle) * leafLen;
+              const tipY = fullToY + Math.sin(actAngle) * leafLen + (leafLen * 0.08);
+
+              const midX = (fullToX + tipX) / 2;
+              const midY = (fullToY + tipY) / 2;
+              const perpAngle = actAngle + Math.PI / 2;
+              const halfW = (leaf.width * lProg) * 0.5;
+
+              const cp1X = midX + Math.cos(perpAngle) * halfW;
+              const cp1Y = midY + Math.sin(perpAngle) * halfW;
+              const cp2X = midX - Math.cos(perpAngle) * halfW;
+              const cp2Y = midY - Math.sin(perpAngle) * halfW;
+
+              ctx.lineWidth = 0.85;
+              ctx.beginPath();
+              ctx.moveTo(fullToX, fullToY);
+              ctx.quadraticCurveTo(cp1X, cp1Y, tipX, tipY);
+              ctx.quadraticCurveTo(cp2X, cp2Y, fullToX, fullToY);
+              ctx.stroke();
+
+              if (lProg > 0.45) {
+                ctx.lineWidth = 0.4;
+                ctx.beginPath();
+                ctx.moveTo(fullToX, fullToY);
+                ctx.lineTo(fullToX + (tipX - fullToX) * 0.88, fullToY + (tipY - fullToY) * 0.88);
+                ctx.stroke();
+              }
+            });
+          });
+        });
+
+        // 4. 更新并绘制双雀
+        updateBirds(now);
+        birds.forEach(b => drawRealisticBird(ctx, b));
+
+        requestAnimationFrame(renderLoop);
+      }
+
+      window.addEventListener('resize', () => {
+        setupDimensions();
+      });
+
+      setupDimensions();
+      requestAnimationFrame(renderLoop);
+    })();
+  </script>
+</body>
+</html>
