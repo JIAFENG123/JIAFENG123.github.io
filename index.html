@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jia Feng — AI Application Engineer & Full-Stack Developer</title>
   <meta name="description" content="Jia Feng 的个人主页 — AI 应用工程师、全栈开发者。专注 Agent 架构、全栈系统、跨端开发与 3D 交互。">
+  <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://jiafeng123.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jiafeng123.github.io/">
+  <meta property="og:title" content="Jia Feng — AI 应用工程师 · 全栈开发者">
+  <meta property="og:description" content="专注 LLM 工程化落地、AI Agent 编排、跨平台应用与 Web 3D 交互。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111'/%3E%3Cpath d='M16 6v20M12.5 12.5h7M12.5 19.5h7' stroke='%23fcfcfc' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    // 首帧前应用已保存的主题，避免深色偏好用户加载时闪白
+    (function () {
+      try {
+        var t = localStorage.getItem('theme-preference');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <style>
     /* ==========================================================================
        极简设计系统 (Swiss Minimalist)
@@ -14,7 +31,7 @@
       --bg: #fcfcfc;
       --text: #111111;
       --text-secondary: #4b4b4b;
-      --text-muted: #787878;
+      --text-muted: #6b6b6b;
       --line: #e6e6e6;
       --hover-color: #000000;
       --tag-border: #e0e0e0;
@@ -28,7 +45,7 @@
         --bg: #121212;
         --text: #f0f0f0;
         --text-secondary: #a0a0a0;
-        --text-muted: #6e6e6e;
+        --text-muted: #8c8c8c;
         --line: #242424;
         --hover-color: #ffffff;
         --tag-border: #2a2a2a;
@@ -39,7 +56,7 @@
       --bg: #fcfcfc;
       --text: #111111;
       --text-secondary: #4b4b4b;
-      --text-muted: #787878;
+      --text-muted: #6b6b6b;
       --line: #e6e6e6;
       --hover-color: #000000;
       --tag-border: #e0e0e0;
@@ -49,7 +66,7 @@
       --bg: #121212;
       --text: #f0f0f0;
       --text-secondary: #a0a0a0;
-      --text-muted: #6e6e6e;
+      --text-muted: #8c8c8c;
       --line: #242424;
       --hover-color: #ffffff;
       --tag-border: #2a2a2a;
@@ -115,11 +132,11 @@
       text-decoration: none;
     }
 
-    .brand-alias {
-      font-weight: 400;
-      color: var(--text-muted);
-      font-size: 0.9em;
-      margin-left: 0.35rem;
+    a:focus-visible,
+    button:focus-visible {
+      outline: 1px solid var(--text-muted);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
     .theme-toggle {
@@ -231,13 +248,33 @@
       transition: opacity 0.15s ease;
     }
 
-    .item-title:hover {
+    a.item-title:hover {
       opacity: 0.65;
     }
 
     .item-title .arrow {
       font-size: 0.85em;
       opacity: 0.5;
+    }
+
+    .item-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      margin-top: 0.1rem;
+    }
+
+    .item-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .item-links a:hover {
+      color: var(--hover-color);
+      border-color: var(--hover-color);
     }
 
     .item-meta {
@@ -324,6 +361,9 @@
       body {
         padding: 3.5rem 1.25rem 4.5rem;
       }
+      #bambooCanvas {
+        opacity: 0.6;
+      }
       .stack-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -338,13 +378,13 @@
 </head>
 <body>
   <!-- 极简东方白描竹林：初始绝对空白，从零慢慢破土拔节 -->
-  <canvas id="bambooCanvas"></canvas>
+  <canvas id="bambooCanvas" aria-hidden="true"></canvas>
 
   <main>
     <!-- 顶栏：姓名与深浅色切换 -->
     <header>
-      <a href="#" class="brand">Jia Feng</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="切换明暗主题">auto</button>
+      <a href="/" class="brand">Jia Feng</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换明暗主题" title="切换明暗主题">auto</button>
     </header>
 
     <!-- 个人介绍 / Bio -->
@@ -382,6 +422,10 @@
           </div>
           <p class="item-desc">生产级 AI Agent 工作台：针对真实云环境资源约束设计。基于 pgvector 实现高效向量检索与 RAG 编排，支持 SSE 流式轨迹解析、断线自动重放与进程崩溃对账机制。</p>
           <p class="item-tags">FastAPI · Nuxt 3 · pgvector · NVIDIA NIM · SSE · Tailwind v4</p>
+          <p class="item-links">
+            <a href="https://agent-workbench-web-yvz3.onrender.com" target="_blank" rel="noopener noreferrer">在线体验 ↗</a>
+            <a href="https://github.com/JIAFENG123/agent-workbench" target="_blank" rel="noopener noreferrer">源码 ↗</a>
+          </p>
         </li>
 
         <!-- Run Tracker -->
@@ -486,7 +530,7 @@
           <a href="https://github.com/JIAFENG123" target="_blank" rel="noopener noreferrer">GitHub / JIAFENG123</a>
         </li>
         <li class="link-item">
-          <a href="mailto:xgg1232021@163.com">Email ↗</a>
+          <a href="mailto:xgg1232021@163.com">Email · xgg1232021@163.com</a>
         </li>
       </ul>
     </section>
@@ -504,26 +548,32 @@
       const toggle = document.getElementById('themeToggle');
       const root = document.documentElement;
       const modes = ['auto', 'dark', 'light'];
-      
-      let saved = localStorage.getItem('theme-preference') || 'auto';
+      const labels = { auto: '跟随系统', dark: '深色', light: '浅色' };
+
+      let saved = 'auto';
+      try { saved = localStorage.getItem('theme-preference') || 'auto'; } catch (e) {}
       applyTheme(saved);
 
       toggle.addEventListener('click', () => {
         const nextIndex = (modes.indexOf(saved) + 1) % modes.length;
         saved = modes[nextIndex];
-        localStorage.setItem('theme-preference', saved);
+        try { localStorage.setItem('theme-preference', saved); } catch (e) {}
         applyTheme(saved);
         if (window.updateBambooTheme) window.updateBambooTheme();
       });
 
+      // 跟随系统模式下，系统切换深浅色时同步更新竹林线条颜色
+      const mq = window.matchMedia('(prefers-color-scheme: dark)');
+      const onSystemChange = () => { if (window.updateBambooTheme) window.updateBambooTheme(); };
+      if (mq.addEventListener) mq.addEventListener('change', onSystemChange);
+      else if (mq.addListener) mq.addListener(onSystemChange);
+
       function applyTheme(mode) {
-        if (mode === 'auto') {
-          root.removeAttribute('data-theme');
-          toggle.textContent = 'auto';
-        } else {
-          root.setAttribute('data-theme', mode);
-          toggle.textContent = mode;
-        }
+        if (mode === 'auto') root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', mode);
+        toggle.textContent = mode;
+        toggle.setAttribute('aria-label', '主题：' + labels[mode] + '，点击切换');
+        toggle.title = '主题：' + labels[mode];
       }
     })();
 
@@ -532,6 +582,7 @@
     // 1. 彻底消灭方向来回转：起飞即锁定航向(Facing Lock)，C形单调抛物贝塞尔航线(绝无S形折返)
     // 2. 俯仰角低通平滑滤波：鸟身随轨迹柔和起伏，绝无高频颤动或倒栽葱
     // 3. 终点动态连续吸附：进近拉平身体、平滑收折双翼、提前伸爪、触枝零跳跃
+    // 4. 虚拟时钟 + 帧率无关物理：切后台不瞬移，120Hz/144Hz 屏幕速度一致
     // ==========================================================================
     (function () {
       const canvas = document.getElementById('bambooCanvas');
@@ -539,7 +590,17 @@
       const ctx = canvas.getContext('2d');
       let width = 0, height = 0, dpr = 1;
       let strokeColor = 'rgba(22, 22, 22, 0.22)';
-      let startTime = null;
+      let startTime = 0;
+
+      // 虚拟时钟：只在页面可见、逐帧推进，单帧最多前进 50ms，切回标签页不会跳帧瞬移
+      let simNow = 0;
+      let lastReal = null;
+      // 帧率归一化系数：以 60fps 为基准 (=1)，120Hz 下约为 0.5
+      let frameK = 1;
+
+      // 减少动态效果：直接呈现长成的竹林，不放飞鸟、不摇曳
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let rafId = null;
 
       function getStrokeColor() {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
@@ -549,8 +610,25 @@
 
       window.updateBambooTheme = function () {
         strokeColor = getStrokeColor();
+        if (reduceMotion) requestFrame();
       };
       strokeColor = getStrokeColor();
+
+      function requestFrame() {
+        if (rafId === null) rafId = requestAnimationFrame(renderLoop);
+      }
+
+      // 统一风场：竹竿、竹枝与鸟爪落点共用同一函数，保证鸟爪始终贴合枝条
+      function breezeAt(now) {
+        if (reduceMotion) return 0;
+        const timeSec = (now - startTime) * 0.001;
+        return Math.sin(timeSec * 0.8) * 1.6 + Math.cos(timeSec * 1.3) * 0.7;
+      }
+
+      // 帧率无关的指数平滑系数：k 为 60fps 下的单帧插值比例
+      function smoothK(k) {
+        return 1 - Math.pow(1 - k, frameK);
+      }
 
       function easeInOutCubic(t) {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -565,17 +643,31 @@
 
       let trees = [];
       let birds = [];
+      let hasBuilt = false;
+      // 窄屏缩放：手机上竹林整体收小，避免竹叶伸进正文阅读区
+      let sceneScale = 1;
 
       function setupDimensions() {
         dpr = window.devicePixelRatio || 1;
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        ctx.scale(dpr, dpr);
+        // 用画布自身的 CSS 尺寸 (100vw × 100vh)：手机地址栏伸缩时 100vh 保持不变，不会触发重建
+        width = canvas.clientWidth || window.innerWidth;
+        height = canvas.clientHeight || window.innerHeight;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        sceneScale = width < 720 ? 0.7 : 1;
+
         buildTrees();
         initBirds();
-        startTime = performance.now();
+
+        if (!hasBuilt && !reduceMotion) {
+          // 首次加载：从空白开始生长
+          startTime = simNow;
+        } else {
+          // 旋转屏幕 / 调整窗口 / 减少动态：直接呈现已长成的竹林，不再从头生长
+          startTime = simNow - 20000;
+        }
+        hasBuilt = true;
       }
 
       function buildTrees() {
@@ -676,7 +768,9 @@
       }
 
       function createTree(cfg) {
-        const segLen = cfg.targetH / cfg.segCount;
+        const s = sceneScale;
+        const treeH = cfg.targetH * s;
+        const segLen = treeH / cfg.segCount;
         const nodes = [];
         let curX = cfg.baseX;
         let curY = cfg.baseY;
@@ -684,8 +778,8 @@
         for (let i = 0; i <= cfg.segCount; i++) {
           nodes.push({ x: curX, y: curY });
           const progress = i / cfg.segCount;
-          const curveOffset = Math.sin(progress * Math.PI) * (cfg.targetH * cfg.curveFactor * 0.32);
-          curX = cfg.baseX + (cfg.targetH * cfg.curveFactor * progress) + curveOffset;
+          const curveOffset = Math.sin(progress * Math.PI) * (treeH * cfg.curveFactor * 0.32);
+          curX = cfg.baseX + (treeH * cfg.curveFactor * progress) + curveOffset;
           curY = cfg.baseY - (segLen * i);
         }
 
@@ -698,10 +792,11 @@
           const origY = n1.y + (n2.y - n1.y) * 0.22;
 
           const angleRad = bCfg.angle * Math.PI;
-          const targetX = origX + Math.cos(angleRad) * bCfg.len;
-          const targetY = origY + Math.sin(angleRad) * bCfg.len;
-          const ctrlX = origX + Math.cos(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bCfg.len * 0.52);
-          const ctrlY = origY + Math.sin(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bCfg.len * 0.52);
+          const bLen = bCfg.len * s;
+          const targetX = origX + Math.cos(angleRad) * bLen;
+          const targetY = origY + Math.sin(angleRad) * bLen;
+          const ctrlX = origX + Math.cos(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bLen * 0.52);
+          const ctrlY = origY + Math.sin(angleRad + (bCfg.side > 0 ? -0.12 : 0.12)) * (bLen * 0.52);
 
           const segFinishTime = cfg.startDelay + (cfg.growDuration * ((bCfg.seg + 1) / cfg.segCount));
           const branchStartTime = segFinishTime + 220;
@@ -716,8 +811,8 @@
             const lAngle = angleRad + (leafSpreads[l % leafSpreads.length] * bCfg.side);
             leaves.push({
               angle: lAngle,
-              length: leafLens[l % leafLens.length],
-              width: leafWidths[l % leafWidths.length],
+              length: leafLens[l % leafLens.length] * s,
+              width: leafWidths[l % leafWidths.length] * s,
               droop: 0.08 + l * 0.025,
               startTime: branchStartTime + branchDur + (l * 180),
               duration: 900
@@ -753,7 +848,7 @@
             id: 'bird_alpha',
             name: '长尾雀',
             tailType: 'long',
-            scale: 1.05,
+            scale: 1.05 * (sceneScale < 1 ? 0.85 : 1),
             activeDelay: 5800,
             startPos: { x: width + 60, y: height * 0.22 },
             flapSpeed: 0.28,
@@ -764,7 +859,7 @@
             id: 'bird_beta',
             name: '短尾山雀',
             tailType: 'short',
-            scale: 0.88,
+            scale: 0.88 * (sceneScale < 1 ? 0.85 : 1),
             activeDelay: 7800,
             startPos: { x: -50, y: height * 0.16 },
             flapSpeed: 0.38,
@@ -794,33 +889,29 @@
           breathPhase: Math.random() * Math.PI,
           // 真实物理弹簧阻尼吸震模型（彻底取代阶跃跳变的 kneeBend）
           shockPos: 0,        // 腿部与身躯屈膝缓冲位移 (像素)
-          shockVel: 0,        // 垂直冲击阻尼速度
-          hasTurned: false,   // 驻足期间是否已做过换向小跳
-          hopOffset: 0        // 换向轻跃位移
+          shockVel: 0         // 垂直冲击阻尼速度
         };
       }
 
       function getPerchClawPos(target, now) {
         if (!target) return { x: width - 110, y: height * 0.45, angle: 0 };
         const { tree, branch } = target;
-        const totalSegs = tree.nodes.length - 1;
-        const timeSec = (now - startTime) * 0.001;
-        const gentleBreeze = Math.sin(timeSec * 0.8) * 1.6;
-
-        const breezeSway = gentleBreeze * Math.pow(branch.segIndex / totalSegs, 1.8) * (tree.cfg.side === 'right' ? 1 : 0.8);
-        const gravitySagY = (branch.weightLoad || 0) * 13.0;
-        const gravitySagX = (branch.weightLoad || 0) * (tree.cfg.side === 'right' ? -4.5 : 4.5);
-        const gravitySagAngle = (branch.weightLoad || 0) * (tree.cfg.side === 'right' ? 0.07 : -0.07);
+        // 与 renderLoop 中竹枝末端 (fullToX / fullToY) 完全一致，鸟爪永远贴合枝条
+        const bSway = breezeAt(now) * 1.5;
+        const load = branch.weightLoad || 0;
+        const gravitySagY = load * 13.0;
+        const gravitySagX = load * (tree.cfg.side === 'right' ? -4.5 : 4.5);
+        const gravitySagAngle = load * (tree.cfg.side === 'right' ? 0.07 : -0.07);
 
         return {
-          x: branch.targetX + breezeSway * 1.5 + gravitySagX,
+          x: branch.targetX + bSway + gravitySagX,
           y: branch.targetY + gravitySagY,
-          angle: (breezeSway * 0.016) + gravitySagAngle
+          angle: (bSway * 0.012) + gravitySagAngle
         };
       }
 
       // 【核心单调贝塞尔航线】：X轴严格单向推进，Y轴向上拱出从容滑翔弧
-      function generateFlightPath(fromP, toP) {
+      function generateFlightPath(fromP, toP, now) {
         const dx = toP.x - fromP.x;
         const dy = toP.y - fromP.y;
         const dist = Math.hypot(dx, dy);
@@ -846,7 +937,7 @@
           p2: { x: cp2x, y: cp2y },
           p3: { x: toP.x, y: toP.y },
           flightFacing,
-          startTime: performance.now(),
+          startTime: now,
           duration
         };
       }
@@ -875,9 +966,9 @@
           tree.branches.forEach(branch => {
             if (branch.targetWeight !== undefined) {
               // 临界阻尼弹性物理：单阶段丝滑下沉并稳定，无任何二次顿挫与下沉抽动
-              const force = (branch.targetWeight - branch.weightLoad) * 0.14;
-              branch.springVelocity = (branch.springVelocity + force) * 0.76;
-              branch.weightLoad += branch.springVelocity;
+              const force = (branch.targetWeight - branch.weightLoad) * 0.14 * frameK;
+              branch.springVelocity = (branch.springVelocity + force) * Math.pow(0.76, frameK);
+              branch.weightLoad += branch.springVelocity * frameK;
             }
           });
         });
@@ -888,20 +979,21 @@
 
         birds.forEach((b, idx) => {
           const otherBird = birds[1 - idx];
-          const otherPerch = (otherBird && otherBird.state === 'PERCHED') ? otherBird.perchTarget : null;
+          // 对方无论是停驻中还是正飞往某枝，都不再选同一根
+          const otherPerch = (otherBird && otherBird.state !== 'WAITING') ? otherBird.perchTarget : null;
 
           // 物理阻尼弹簧更新 (模拟鸟儿触枝与停驻时的腿部减震)
           const springK = 0.28;
           const springDamp = 0.72;
-          b.shockVel += (-springK * b.shockPos) - b.shockVel * (1 - springDamp);
-          b.shockPos += b.shockVel;
+          b.shockVel += ((-springK * b.shockPos) - b.shockVel * (1 - springDamp)) * frameK;
+          b.shockPos += b.shockVel * frameK;
 
           if (b.state === 'WAITING') {
             if (elapsed >= b.cfg.activeDelay) {
               b.perchTarget = chooseNextPerch(null, otherPerch);
               const clawTarget = getPerchClawPos(b.perchTarget, now);
               const startTarget = { x: clawTarget.x, y: clawTarget.y - 6.5 };
-              b.flightPath = generateFlightPath(b.cfg.startPos, startTarget);
+              b.flightPath = generateFlightPath(b.cfg.startPos, startTarget, now);
               b.facing = b.flightPath.flightFacing; // 航向立即锁定
               b.state = 'FLYING';
               b.wingFoldProg = 0;
@@ -968,7 +1060,7 @@
             }
 
             // 低通滤波平滑俯仰角度追踪
-            b.pitch += (desiredPitch - b.pitch) * 0.18;
+            b.pitch += (desiredPitch - b.pitch) * smoothK(0.18);
 
             // 6. 扇翅与滑翔 (进近阶段自然转为展翼滑翔)
             if (progress > 0.72) {
@@ -977,7 +1069,7 @@
               const flapCycle = ((flightElapsed + idx * 400) % 1700);
               if (flapCycle < 700) {
                 b.isGliding = false;
-                b.wingPhase += b.cfg.flapSpeed;
+                b.wingPhase += b.cfg.flapSpeed * frameK;
               } else {
                 b.isGliding = true;
               }
@@ -1000,8 +1092,6 @@
               b.clawReachProg = 1;
               b.perchTimer = now;
               b.perchDuration = 5200 + Math.random() * 4500 + idx * 900;
-              b.hasTurned = false;
-              b.hopOffset = 0;
 
               // 小鸟自身轻微屈膝卸力
               b.shockPos = 0;
@@ -1009,21 +1099,21 @@
 
               // 【核心修复】：爪触枝条瞬间才施加重力，且只施加柔和阻尼初速度，竹枝自然顺滑下弯，绝无突兀顿挫！
               if (b.perchTarget) {
-                b.perchTarget.branch.targetWeight = b.cfg.weightForce;
-                b.perchTarget.branch.springVelocity = 0.08 * b.cfg.weightForce;
+                b.perchTarget.branch.targetWeight += b.cfg.weightForce;
+                b.perchTarget.branch.springVelocity += 0.08 * b.cfg.weightForce;
               }
             }
           } else if (b.state === 'PERCHED') {
             const clawPos = getPerchClawPos(b.perchTarget, now);
             b.x = clawPos.x;
-            b.y = clawPos.y - 6.5 - (b.hopOffset || 0);
-            b.pitch += (clawPos.angle - b.pitch) * 0.16; // 顺应竹枝微风晃动
+            b.y = clawPos.y - 6.5;
+            b.pitch += (clawPos.angle - b.pitch) * smoothK(0.16); // 顺应竹枝微风晃动
 
             b.wingFoldProg = 1;
             b.clawReachProg = 1;
 
             const pTime = now - b.perchTimer;
-            b.breathPhase += 0.038;
+            b.breathPhase += 0.038 * frameK;
 
             // 【彻底杜绝飞落后立即反向】：刚落地绝对保持着陆惯性航向不变！
             // 顾盼主要靠头部好奇转动 (headTurn)，动作自然逼真
@@ -1033,15 +1123,16 @@
             // 驻足期满起飞 (重力归零，竹枝优雅弹起复位)
             if (pTime >= b.perchDuration) {
               if (b.perchTarget) {
-                b.perchTarget.branch.targetWeight = 0;
-                b.perchTarget.branch.springVelocity = -0.16 * b.cfg.weightForce;
+                const br = b.perchTarget.branch;
+                br.targetWeight = Math.max(0, br.targetWeight - b.cfg.weightForce);
+                br.springVelocity -= 0.16 * b.cfg.weightForce;
               }
 
               const fromPt = { x: b.x, y: b.y };
               b.perchTarget = chooseNextPerch(b.perchTarget, otherPerch);
               const toClaw = getPerchClawPos(b.perchTarget, now);
               const toPt = { x: toClaw.x, y: toClaw.y - 6.5 };
-              b.flightPath = generateFlightPath(fromPt, toPt);
+              b.flightPath = generateFlightPath(fromPt, toPt, now);
               b.facing = b.flightPath.flightFacing; // 起飞锁定新航向
               b.state = 'FLYING';
               b.wingFoldProg = 0;
@@ -1295,12 +1386,19 @@
       }
 
       // 核心渲染循环
-      function renderLoop(now) {
-        if (!startTime) startTime = now;
+      function renderLoop(realNow) {
+        rafId = null;
+        // 推进虚拟时钟：单帧最多 50ms，切后台回来不会让鸟瞬移、竹子不会跳帧
+        const dt = lastReal === null ? 16.667 : Math.min(50, Math.max(0, realNow - lastReal));
+        lastReal = realNow;
+        simNow += dt;
+        frameK = dt / 16.667;
+        const now = simNow;
+
         ctx.clearRect(0, 0, width, height);
 
         const timeSec = (now - startTime) * 0.001;
-        const gentleBreeze = Math.sin(timeSec * 0.8) * 1.6 + Math.cos(timeSec * 1.3) * 0.7;
+        const gentleBreeze = breezeAt(now);
 
         ctx.strokeStyle = strokeColor;
         ctx.fillStyle = strokeColor;
@@ -1434,19 +1532,33 @@
           });
         });
 
-        // 4. 更新并绘制双雀
+        // 4. 更新并绘制双雀（减少动态模式下不放飞鸟，只静态绘制一帧竹林）
+        if (reduceMotion) return;
         updateBirds(now);
         birds.forEach(b => drawRealisticBird(ctx, b));
 
-        requestAnimationFrame(renderLoop);
+        requestFrame();
       }
 
+      // 页面隐藏时停表，回来后从暂停处继续
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) lastReal = null;
+      });
+
+      // 仅在画布尺寸真正变化时重建（防抖 200ms）；手机地址栏伸缩不会触发重建
+      let resizeTimer = null;
       window.addEventListener('resize', () => {
-        setupDimensions();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const w = canvas.clientWidth, h = canvas.clientHeight;
+          if (Math.abs(w - width) < 1 && Math.abs(h - height) < 1 && (window.devicePixelRatio || 1) === dpr) return;
+          setupDimensions();
+          requestFrame();
+        }, 200);
       });
 
       setupDimensions();
-      requestAnimationFrame(renderLoop);
+      requestFrame();
     })();
   </script>
 </body>
