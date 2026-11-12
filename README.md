@@ -24,12 +24,13 @@
      - **触枝缓冲（Touchdown）**：引入真实物理阻尼弹簧（Spring-Damper Shock Absorption），落地瞬间初始形变为 0，平滑下蹲卸力再轻柔回弹，彻底杜绝了帧间坐标跳跃与卡顿顿挫感；
    - **【重力受弯与枝条弹性联动】**：
      - 触枝时竹枝受重下弯约 13px，小鸟双爪牢牢扣住枝条随风摇曳，浑然一体；起飞时竹枝卸重欢快反弹，符合真实工笔写意神韵。
-4. **真实代码仓库沉淀**：
-   - 社交美学卡片工坊 **TypeCard**（原生 Canvas 2D 2x/3x 矢量渲染 + 30 款独家先锋/水墨排版主题 + Chrome CDP 自动化测试管线）
-   - 生产级 AI Agent 工作台 **Agent Workbench**（FastAPI + pgvector + Nuxt 3 纯静态 + SSE 断线重连与崩溃对账）
-   - 真实地球微缩沙盘工作站 **Terra × Blender Diorama**（马特洪峰 DEM 遥感高程 + Blender Python 自动化切片 + 3D 打印 STL/GLB 管线）
-   - 零成本 Flutter 运动追踪 **Run Tracker**（纯本地 SQLite + GPX 导出）
-   - 3D 拟真翻页相册 **3D Photo Album**（Three.js + GSAP）
-   - 系统监控工具 **mcp-sys-mon**（FastMCP）
-   - 商业实战项目精准沉淀（**StoryLab** 跨境 AI 商品素材平台、**小睿** AI 智能合规助手、企业级 Nuxt 3 运营中台架构）
+4. **已上线独立产品与 3D 实验室**：
+   - 社交美学卡片工坊 **TypeCard**（已部署：`https://jiafeng123.github.io/typecard/` · 原生 Canvas 2D 2x/3x 矢量渲染 + 30 款独家先锋/水墨排版主题 + Chrome CDP 自动化测试管线）
+   - 极简网页阅读器 **Clean Web Reader**（已部署：`https://jiafeng123.github.io/clean-pdf-reader/` · PDF/EPUB 双引擎 + 划词高亮 + 批注笔记 + PWA 离线）
+   - 生产级 AI Agent 工作台 **Agent Workbench**（已部署：`https://agent-workbench-web-yvz3.onrender.com` · FastAPI + pgvector + Nuxt 3 + SSE 断线重连与崩溃对账）
+   - 轻量短链服务 **shortenlink**（已部署：`https://magical-boba-a45454.netlify.app/` · Netlify Serverless Functions + Blobs）
+   - 超跑空气动力学数字孪生 **AETHER-GT**（Blender 5.2 A级曲面建模 + 22 条流线束 + GLSL 实时流体脉冲 Shader）
+   - 东方院体拟真 3D 绒毛工坊 **宣和墨绣**（Blender 真实毛发微观烘焙 + WebGL 实时温润质感）
+   - 天体机械星轨天文钟 **Astraea Horologium**（Blender 5.2 差速齿轮传动与黄道星盘硬表面建模）
+   - 工业级实战沉淀（**StoryLab** 跨境 AI 商品素材平台、**小睿** AI 智能合规助手、企业级 Nuxt 3 运营中台架构）
 5. **零外部依赖**：单文件 HTML/CSS/JS，极轻极快，双击即开，适合部署于 GitHub Pages。

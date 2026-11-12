@@ -402,17 +402,17 @@
       <div class="now-box">
         <p>
           <span class="status-dot"></span>
-          刚刚上线 <strong>TypeCard</strong>（社交美学卡片工坊，30 款先锋/东方水墨排版引擎与 CDP 自动化渲染测试管线）；持续推进 <strong>Agent Workbench</strong> 的生产级落地（pgvector 向量编排、SSE 流式重连与崩溃对账架构），并探索真实地理遥感高程与 3D 微缩沙盘生成工作流。
+          已部署上线 <strong>TypeCard</strong>（社交美学卡片工坊）与 <strong>Clean Web Reader</strong>（极简网页端 PDF/EPUB 阅读器）；深度推进 <strong>Blender 5.2 流程化 3D 建模与毛发/流体着色器管线</strong>（超跑风洞、宣和拟真绒毛），并持续迭代 <strong>Agent Workbench</strong> 生产级云端架构。
         </p>
       </div>
     </section>
 
-    <!-- 最新核心项目 / Latest Projects（基于最新代码仓库） -->
+    <!-- 已部署上线产品 / Deployed Products -->
     <section>
-      <h2 class="section-title">最新作品 · Projects</h2>
+      <h2 class="section-title">已上线作品 · Deployed</h2>
       <ul class="item-list">
 
-        <!-- TypeCard (置顶高光项目) -->
+        <!-- TypeCard -->
         <li class="item">
           <div class="item-header">
             <a href="https://jiafeng123.github.io/typecard/" target="_blank" rel="noopener noreferrer" class="item-title">
@@ -428,77 +428,90 @@
           </p>
         </li>
 
+        <!-- Clean Web Reader -->
+        <li class="item">
+          <div class="item-header">
+            <a href="https://jiafeng123.github.io/clean-pdf-reader/" target="_blank" rel="noopener noreferrer" class="item-title">
+              Clean Web Reader · 极简网页阅读器 <span class="arrow">↗</span>
+            </a>
+            <span class="item-meta">2026 · 独立工具</span>
+          </div>
+          <p class="item-desc">遵循“克制设计、隐形交互、专注内容”哲学的纯前端本地化阅读器。完整支持 PDF 矢量排版与 EPUB 流式重排双引擎，内置划词高亮、批注笔记、大纲导航、断点续读与超长文档虚拟内存回收；支持 PWA 离线安装与一键导出结构化 Markdown 笔记。</p>
+          <p class="item-tags">PDF.js · ePub.js · PWA · Local-First · Markdown Export</p>
+          <p class="item-links">
+            <a href="https://jiafeng123.github.io/clean-pdf-reader/" target="_blank" rel="noopener noreferrer">在线体验 ↗</a>
+            <a href="https://github.com/JIAFENG123/clean-pdf-reader" target="_blank" rel="noopener noreferrer">源码 ↗</a>
+          </p>
+        </li>
+
         <!-- Agent Workbench -->
         <li class="item">
           <div class="item-header">
-            <a href="https://github.com/JIAFENG123/agent-workbench" target="_blank" rel="noopener noreferrer" class="item-title">
-              Agent Workbench <span class="arrow">↗</span>
+            <a href="https://agent-workbench-web-yvz3.onrender.com" target="_blank" rel="noopener noreferrer" class="item-title">
+              Agent Workbench · AI Agent 工作台 <span class="arrow">↗</span>
             </a>
             <span class="item-meta">2026 · AI 全栈与 Agent</span>
           </div>
-          <p class="item-desc">生产级 AI Agent 工作台：针对真实云环境资源约束设计。基于 pgvector 实现高效向量检索与 RAG 编排，支持 SSE 流式轨迹解析、断线自动重放与进程崩溃对账机制。</p>
-          <p class="item-tags">FastAPI · Nuxt 3 · pgvector · NVIDIA NIM · SSE · Tailwind v4</p>
+          <p class="item-desc">生产级 AI Agent 工作台：针对真实云环境资源约束设计。基于 pgvector 实现高效向量检索与 RAG 编排，支持 SSE 流式轨迹解析、断线自动重放与进程崩溃对账机制。部署于 Render 云平台。</p>
+          <p class="item-tags">FastAPI · Nuxt 3 · pgvector · NVIDIA NIM · SSE · Render</p>
           <p class="item-links">
             <a href="https://agent-workbench-web-yvz3.onrender.com" target="_blank" rel="noopener noreferrer">在线体验 ↗</a>
             <a href="https://github.com/JIAFENG123/agent-workbench" target="_blank" rel="noopener noreferrer">源码 ↗</a>
           </p>
         </li>
 
-        <!-- Terra x Blender 3D Diorama -->
+        <!-- shortenlink -->
         <li class="item">
           <div class="item-header">
-            <a href="https://github.com/JIAFENG123" target="_blank" rel="noopener noreferrer" class="item-title">
-              Terra × Blender · 地球微缩沙盘工作站 <span class="arrow">↗</span>
+            <a href="https://magical-boba-a45454.netlify.app/" target="_blank" rel="noopener noreferrer" class="item-title">
+              shortenlink · 轻量 Serverless 短链 <span class="arrow">↗</span>
             </a>
-            <span class="item-meta">2026 · 3D 图形与 GIS</span>
+            <span class="item-meta">2026 · Serverless</span>
           </div>
-          <p class="item-desc">马特洪峰 (4,478m) 真实地球微缩沙盘：整合 1024×1024 遥感高程与卫星瓦片，使用 Blender Python 自动化地形网格切片与等高线着色，构建交互式 WebGL 3D 空间观测器与高精度 3D 打印 (STL/GLB) 生成管线。</p>
-          <p class="item-tags">Three.js · Blender 5.2 · Python · DEM GIS · WebGL · 3D Print</p>
-        </li>
-
-        <!-- Run Tracker -->
-        <li class="item">
-          <div class="item-header">
-            <a href="https://github.com/JIAFENG123/run_tracker" target="_blank" rel="noopener noreferrer" class="item-title">
-              Run Tracker <span class="arrow">↗</span>
-            </a>
-            <span class="item-meta">2026 · 移动端与传感器</span>
-          </div>
-          <p class="item-desc">纯本地“零成本”跑步记录与运动追踪 App：基于开源瓦片地图与硬件 GPS 追踪，离线 SQLite 隐私存储，内置动态配速图表、离线语音播报与标准 GPX 轨迹导出。</p>
-          <p class="item-tags">Flutter · Dart · OpenStreetMap · SQLite · GPX</p>
+          <p class="item-desc">基于 Netlify Functions 与 Blobs 构建的轻量 Serverless 短链服务：支持自定义短码分配、极速 301 重定向与实时访问热度统计，零数据库配置与毫秒级冷启动。</p>
+          <p class="item-tags">Netlify Functions · Blobs · Serverless · TypeScript</p>
           <p class="item-links">
-            <a href="https://github.com/JIAFENG123/run_tracker" target="_blank" rel="noopener noreferrer">源码 ↗</a>
+            <a href="https://magical-boba-a45454.netlify.app/" target="_blank" rel="noopener noreferrer">在线体验 ↗</a>
+            <a href="https://github.com/JIAFENG123/shortenlink" target="_blank" rel="noopener noreferrer">源码 ↗</a>
           </p>
         </li>
 
-        <!-- Realistic 3D Photo Album -->
+      </ul>
+    </section>
+
+    <!-- 3D 建模与图形实验室 / 3D Models & Graphics -->
+    <section>
+      <h2 class="section-title">3D 建模与图形实验室 · 3D Models & Graphics</h2>
+      <ul class="item-list">
+
+        <!-- AETHER-GT -->
         <li class="item">
           <div class="item-header">
-            <a href="https://github.com/JIAFENG123/photo-album-3d" target="_blank" rel="noopener noreferrer" class="item-title">
-              3D Photo Album & Experiments <span class="arrow">↗</span>
-            </a>
-            <span class="item-meta">2026 · WebGL / 3D</span>
+            <span class="item-title">AETHER-GT · 超跑空气动力学数字孪生</span>
+            <span class="item-meta">2026 · Blender 5.2 / GLSL</span>
           </div>
-          <p class="item-desc">拟真 3D 交互翻页相册与空间视觉实验：支持鼠标拖拽动态翻页、全景 360° 自由视角缩放控制与流畅缓动物理反馈。</p>
-          <p class="item-tags">Three.js · GSAP · TypeScript · Vite</p>
-          <p class="item-links">
-            <a href="https://github.com/JIAFENG123/photo-album-3d" target="_blank" rel="noopener noreferrer">源码 ↗</a>
-          </p>
+          <p class="item-desc">工业设计级超跑空气动力学数字孪生实验室：Blender 5.2 流程化高精度 Catmull-Clark 3 级曲面流线型建模，构建 AETHER-GT 车身、主动液压尾翼 (DRS/Airbrake) 与独立旋转轮组；生成 22 条三维气流线束，结合 GLSL 实时风洞流体脉冲 Shader 与毛玻璃 UI，实现 0~360 km/h 真实下压力与风阻遥测联动。</p>
+          <p class="item-tags">Blender 5.2 · A级曲面建模 · GLSL 流体 Shader · 数字孪生 · 空气动力学</p>
         </li>
 
-        <!-- mcp-sys-mon -->
+        <!-- 宣和墨绣 · 拟真 3D 绒毛工坊 -->
         <li class="item">
           <div class="item-header">
-            <a href="https://github.com/JIAFENG123/mcp-sys-mon" target="_blank" rel="noopener noreferrer" class="item-title">
-              mcp-sys-mon <span class="arrow">↗</span>
-            </a>
-            <span class="item-meta">2026 · 工具链 / MCP</span>
+            <span class="item-title">宣和墨绣 · 拟真 3D 绒毛工坊</span>
+            <span class="item-meta">2026 · 3D 质感 / WebGL</span>
           </div>
-          <p class="item-desc">基于 FastMCP 的轻量系统级监控 MCP Server，向大语言模型客户端暴露 CPU、内存、网络及进程诊断工具集，无缝融入自动化开发工作流。</p>
-          <p class="item-tags">Python · FastMCP · Model Context Protocol</p>
-          <p class="item-links">
-            <a href="https://github.com/JIAFENG123/mcp-sys-mon" target="_blank" rel="noopener noreferrer">源码 ↗</a>
-          </p>
+          <p class="item-desc">基于 Blender 真实毛发粒子系统与微观烘焙算法，突破性地将高密度绒毛猫咪模型导出并优化至实时 WebGL 端；融合宋徽宗宣和院体工笔美学与原生 Canvas 2D 拟真光影着色，实现细腻温润的 3D 毛发质感与极简东方互动。</p>
+          <p class="item-tags">Blender 毛发烘焙 · Three.js · WebGL · 宣和院体美学 · 真实质感</p>
+        </li>
+
+        <!-- Astraea Horologium -->
+        <li class="item">
+          <div class="item-header">
+            <span class="item-title">Astraea Horologium · 天体机械星轨天文钟</span>
+            <span class="item-meta">2026 · 机械动力学建模</span>
+          </div>
+          <p class="item-desc">精密高阶钟表机械动力学 3D 建模：解构复杂多层差速齿轮箱、擒纵调速机构、星盘天体仪与黄道十二宫刻度环，展现工业级机械几何之美与严谨空间运转咬合逻辑。</p>
+          <p class="item-tags">Blender 5.2 · 机械动力学建模 · 差速齿轮系 · 空间硬表面</p>
         </li>
 
       </ul>
@@ -553,8 +566,8 @@
           <span class="stack-items">Nuxt 3, Vue 3, React, TypeScript, TailwindCSS, Flutter (Dart)</span>
         </div>
         <div class="stack-category">
-          <span class="stack-label">Graphics & Creative</span>
-          <span class="stack-items">Native Canvas 2D, Three.js, WebGL, GSAP, Blender 5.2, Konva.js</span>
+          <span class="stack-label">3D & Graphics</span>
+          <span class="stack-items">Blender 5.2, Native Canvas 2D, Three.js, WebGL, GLSL Shader, GSAP, Konva.js</span>
         </div>
       </div>
     </section>
@@ -568,6 +581,9 @@
         </li>
         <li class="link-item">
           <a href="https://jiafeng123.github.io/typecard/" target="_blank" rel="noopener noreferrer">TypeCard 工坊</a>
+        </li>
+        <li class="link-item">
+          <a href="https://jiafeng123.github.io/clean-pdf-reader/" target="_blank" rel="noopener noreferrer">Clean Reader 阅读器</a>
         </li>
         <li class="link-item">
           <a href="mailto:xgg1232021@163.com">Email · xgg1232021@163.com</a>
